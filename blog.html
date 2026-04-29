@@ -6,9 +6,13 @@
   <title>TwoDots Films - Reconstructed Layout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <style>
+       
+
+        
     
         /* Grid Container */
         .reel-grid {
@@ -23,7 +27,7 @@
 
         /* Box Styling */
         .reel-box {
-            height: 400px;
+            height: 290px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -127,8 +131,89 @@
     .reel-grid div:nth-child(9) { order: 9; } /* Text 5 */
     .reel-grid div:nth-child(10) { order: 10; } /* Image 5 */
 }
-  </style>
   
+     
+
+        /* Container styling */
+        .impact-container {
+            width:100%;
+            max-width: 1100px;
+            position: relative;
+            padding: 40px 0;
+            /* justify-content: center; */
+            /* In do lines se container center ho jayega */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Optional: Agar aap display flex use karna chahte hain contents ke liye */
+    display: block;
+        }
+
+        /* Swiper wrapper sizing */
+        .swiper {
+            width: 100%;
+            padding: 20px 0;
+            justify-content: center;
+            
+        }
+
+        /* Individual Slide (Logo Circle) */
+        .impact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-ring {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 7px solid #44767b; /* Teal color like your screenshot */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            
+            padding: 20px;
+             
+        }
+
+        .logo-ring img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Navigation Arrows */
+        .swiper-button-next, .swiper-button-prev {
+            color: #44767b;
+            transform: scale(0.7);
+            width:-102px;
+             
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 768px) {
+             .impact-container {
+            width:300px;
+            
+            
+        }
+             
+            .logo-ring {
+                width: 120px;
+                height: 120px;
+                padding:15px;
+            }
+             .logo-ring img {
+            width: 100%;
+            height: 100%;
+             
+        }
+        }
+    </style>
 </head>
 <body>
    
@@ -165,15 +250,49 @@
 
     <section class="page-section">
       <div class="section-banner"><h2 class="section-title">Digital <span class="accent">Impact Stories</span></h2></div>
-      <div class="impact-wrap">
-        <div class="impact-list">
-          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\DAV TV_LOGO_Alfa_Low.png" alt="DAV TV"></div></div>
-          <div class="impact-divider"></div>
-          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\Arya Yuva Samaj_Logo.png" alt="Arya Yuva Samaj"></div></div>
-          <div class="impact-divider"></div>
-          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\CAKBS_Logo Circle.png" alt="Superstars" style="width:99rem; height:99rem; max-width:none;"></div></div>
+       <div class="impact-container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="impact-card">
+                        <div class="logo-ring">
+                            <img src="images/Digital_Impact_Stories/DAV TV_LOGO_Alfa_Low.png" alt="DAV TV">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="impact-card">
+                        <div class="logo-ring">
+                            <img src="images/Digital_Impact_Stories/Arya Yuva Samaj_Logo.png" alt="Arya Yuva Samaj">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="impact-card">
+                        <div class="logo-ring">
+                            <img src="images/Digital_Impact_Stories/CAKBS_Logo Circle.png" alt="Superstars">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="impact-card">
+                        <div class="logo-ring">
+                            <img src="images/Digital_Impact_Stories/DAV TV_LOGO_Alfa_Low.png" alt="DAV TV">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
-      </div>
+    </div>
+
 
       <div class="section-banner"><h2 class="section-title">Creative Content <span class="accent">Portfolio</span></h2></div>
       
@@ -183,44 +302,48 @@
 
      <div class="reel-grid">
         
+        
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\World Cup.png" alt="World Cup (Gaurav Kapur)">
+        </div>
         <div class="reel-box text-box">
             <h3>World Cup (Gaurav Kapur)</h3>
             <p>Zee News Promo</p>
         </div>
-        <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\World Cup.png" alt="World Cup (Gaurav Kapur)">
-        </div>
 
-        <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\KGOC.png" alt="KGOC Independence Day Film">
-        </div>
+       
         <div class="reel-box text-box">
             <h3>KGOC Independence Day Film</h3>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corporate Film </p>
+        </div>
+         <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\KGOC.png" alt="KGOC Independence Day Film">
+        </div>
+        
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\Antardwand.png" alt="Antardwand">
         </div>
          <div class="reel-box text-box">
             <h3>Antardwand</h3>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short Film</p>
         </div>
-        <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\Antardwand.png" alt="Antardwand">
-        </div>
 
-        <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\No Nasha Nation.png" alt="No Nasha Nation Anthem">
-        </div>
+      
         <div class="reel-box text-box">
             <h3>No Nasha Nation Anthem</h3>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anti-Drug Awareness Campaign</p>
         </div>
-
+          <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\No Nasha Nation.png" alt="No Nasha Nation Anthem">
+        </div>
+  <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\Vijay.png" alt=" Vijay">
+        </div>
          <div class="reel-box text-box">
             <h3>Why I ride | Vijay</h3>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documentary</p>
         </div>
-        <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\Vijay.png" alt=" Vijay">
-        </div>
+      
 
     </div>
     
@@ -287,7 +410,34 @@
 
 
 
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1, // Default for very small screens
+            spaceBetween: 30,
+            loop: true, // Infinite loop
+            autoplay: {
+                delay: 2500, // 2.5 seconds mein automatic move hoga
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                // Jab screen 768px se badi ho (Laptop)
+                768: {
+                    slidesPerView: 3, // 3 slides ek row mein
+                },
+                // Jab screen phone par ho
+                0: {
+                    slidesPerView: 2, // 2 slides ek row mein
+                }
+            },
+        });
+    </script>
 
 
 
