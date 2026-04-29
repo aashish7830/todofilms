@@ -18,9 +18,10 @@
             justify-content: center;
             align-items: stretch;
             gap: 20px;
-            max-width: 1180px;
-            width: 100%;
+            max-width: 1200px;
+            width: 95%;
             margin-left: auto;
+            margin: 52px auto 40px auto;
              margin-right: auto;
 
             margin-bottom: 40px; /* Space between rows */
@@ -37,9 +38,10 @@
         /* Card Styling - Same as before */
         .card {
             
-            flex-shrink: 0;
+            /* flex-shrink: 0; */
+            flex: 2px 2px 270px;
             /* box-shadow: 0 10px 30px rgba(0,0,0,0.05); */
-            text-align: center;
+            /* text-align: center; */
             height:320px;
         }
 
@@ -69,9 +71,11 @@
         /* Services List Styling - Same as before */
         .services-container {
             display: flex;
+            flex: 1;
             flex-direction: column;
             justify-content: center;
             padding: 0 20px;
+            min-width: 250px;
             flex-grow: 1;
               padding-left: 1px;
               padding-right:1px;
@@ -107,7 +111,7 @@
        
    
 
-       @media (min-width: 1570px)   {
+       @media (min-width: 3200px)   {
             .main-section {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -257,11 +261,12 @@
         .reel-grid {
             display: grid;
             grid-template-columns: 1fr 1fr; /* 2 Columns */
-            width: 100%;
-            max-width: 1050px;
-            margin: 0 auto;
+            width: 90%;
+            max-width: 1100px;
+            /* margin: 0 auto;
             margin-bottom:69px;
-            margin-top:4rem;
+            margin-top:4rem; */
+            margin: 4rem auto 69px auto;
         }
 
         /* Box Styling */
