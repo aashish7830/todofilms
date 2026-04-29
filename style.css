@@ -536,38 +536,44 @@
 /* Section Background */
 .brand-section {
     background-color: #e0e6e6; 
-    padding: 100px 20px; /* Thoda extra padding taaki icons ko jagah mile */
+    padding: 10px 10px; /* Thoda extra padding taaki icons ko jagah mile */
     display: flex;
     justify-content: center;
 }
 
 /* Logos Container - AB YE MAIN HAI */
 .logo-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: white;
-    padding: 10px;
+    display: grid;
+    max-width:1120px;
+     
     position: relative; /* Icons ab iske corners se attach honge */
     z-index: 5;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Optional: halki shadow */
+    margin:0 auto;
+    gap:7px;
+    grid-template-columns:repeat(7,1fr);
 }
 
 /* Individual Logo Card */
 .logo-card {
-    border-right: 2px solid #e0e6e6;
-    padding: 20px 30px;
+    
+    /* padding: 10px 20px; */
+     padding:-0.7px;
     display: flex;
     align-items: center;
+    gap:8px;
+    overflow:hidden;
+    aspect-ratio:1/1.3;
+     justify-content:center;
 }
 
-.logo-card:last-of-type {
+/* .logo-card:last-of-type {
     border-right: none;
-}
+} */
 
 .logo-card img {
-    max-width: 120px;
-    height: auto;
+    max-height: 100%;
+    /* height: auto; */
+    object-fit:contain
 }
 
 /* --- Corner Icons (Attached to Container) --- */
@@ -594,7 +600,7 @@
 }
 
 .bottom-right img{
-    margin-bottom: -1rem;   /* Container ke niche se bahar */
+    margin-bottom: -0.9rem;   /* Container ke niche se bahar */
     right: -25px;    /* Container ke daayein se bahar */
 }
 
