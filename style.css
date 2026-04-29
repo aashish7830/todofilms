@@ -343,42 +343,8 @@
     left:-4px; 
 }
 
-/* Sidha Circle */
-.bottom-circle2 {
-    position: absolute;
-    /* Image mein circle L-shape ki dandi se thoda chhota hai */
-    width: 30px; 
-    height: 30px;
-    background-color: #4E5D61;
-    border-radius: 50%;
-    /* Position ko L-shape ke vertical part ke niche set kiya gaya hai */
-    top:95px; 
-    left:-4px; 
-  }
-
-        /* Ulta L-Shape */
-        .teal-box-u2 {
-            position: absolute;
-             right:155px;
-            width: 100px; 
-           height: 100px;
-           bottom:20px;
-             background-color: #4E5D61;
-            transform: rotate(180deg);
-           clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
-        }
-
-        /* Ulta Circle (Jo ab upar dikhega) */
-        .bottom-circle-u2 {
-            position: absolute;
-            right:155px; /* Inverted L ke corner se match karne ke liye */
-            width:30px;
-            height:30px;
-           
-            background-color: #377378;
-            border-radius: 50%;
-            bottom:123px; /* L-shape ke upar positioning */
-        }
+ 
+ 
     
 
 
@@ -596,45 +562,155 @@
         /* width:110%; */
         object-fit:contain
     }
-    .top-icon {
+    /* .top-icon {
     position: absolute;
-    /* Screenshot ke hisaab se icon ko top-left corner par set karne ke liye */
-    top: 18px;         /* Isse icon border line ke upar aa jayega */
-    left: 82px;        /* Isse icon corner ke thoda bahar/upar set hoga */
-    z-index: 10;        /* Taaki ye border ke upar dikhe */
+   
+    top: 18px;        
+    left: 82px;         
+    z-index: 10;         
 }
 
 .top-icon img {
-    /* Screenshot ke hisaab se width 60px se 80px ke beech honi chahiye */
+   
     width: 75px;        
-    height: auto;       /* Aspect ratio maintain rakhne ke liye */
+    height: auto;        
     display: block;
     
-    /* Agar image ke piche ki line chhupani hai toh background de sakte hain */
-    /* background-color: #e0e6e6; Apne section ka background color yahan likhein */
+    
+     
     padding: 0 5px;
 }
 
 
-/* second icon */
+ 
   .down-icon {
     position: absolute;
-    /* Screenshot ke hisaab se icon ko top-left corner par set karne ke liye */
-    bottom: 46px;         /* Isse icon border line ke upar aa jayega */
-    right: 80px;        /* Isse icon corner ke thoda bahar/upar set hoga */
-    z-index: 10;        /* Taaki ye border ke upar dikhe */
+     
+    bottom: 46px;        
+    right: 80px;         
+    z-index: 10;         
 }
 
 .down-icon img {
-    /* Screenshot ke hisaab se width 60px se 80px ke beech honi chahiye */
+     
     width: 75px;        
-    height: auto;       /* Aspect ratio maintain rakhne ke liye */
+    height: auto;        
     display: block;
     
-    /* Agar image ke piche ki line chhupani hai toh background de sakte hain */
-    /* background-color: #e0e6e6; Apne section ka background color yahan likhein */
+     
     padding: 0 5px;
+} */
+
+
+
+
+
+
+
+/* --- Base Styles (Mobile First) --- */
+/* Sabse pehle choti screens ke liye default settings */
+.top-icon, .down-icon {
+    position: absolute;
+    z-index: 10;
 }
+
+.top-icon img, .down-icon img {
+    height: auto;
+    display: block;
+    padding: 0 5px;
+    width: 50px; /* Choti screen par icon chota rakhein */
+}
+
+/* Default positions for Mobile */
+.top-icon img{
+    margin-top:-1spx;
+    margin-left:1.6rem;
+}
+
+.down-icon {
+    margin-bottom: 9px;
+    margin-right:24px;
+}
+
+
+/* @media (min-width: 1920px) { 
+     .top-icon img, .down-icon img {
+        width: 100%;
+    }
+    .top-icon {
+        top: 15px;
+        margin-left:0.02rem;
+    }
+    .down-icon {
+        bottom: 30px;
+        right: 40px;
+    }
+} */
+
+
+
+/* --- Tablets (768px and up) --- */
+@media (min-width: 768px) {
+    .top-icon img, .down-icon img {
+        width: 60px;
+    }
+    .top-icon {
+        top: 15px;
+        left: 40px;
+    }
+    .down-icon {
+        bottom: 30px;
+        right: 40px;
+    }
+}
+
+/* --- Laptops / Small Desktops (1024px and up) --- */
+@media (min-width: 1024px) {
+    .top-icon img, .down-icon img {
+        width: 70px;
+    }
+    .top-icon {
+        top: 18px;
+        left: 60px;
+    }
+    .down-icon {
+        bottom: 40px;
+        right: 60px;
+    }
+}
+
+/* --- Large Desktops (1440px and up) --- */
+@media (min-width: 1440px) {
+    .top-icon img, .down-icon img {
+        width: 80px; /* Badi screen par icon thoda bada */
+    }
+    .top-icon {
+        top: 20px;
+        left: 82px; /* Aapki original value */
+    }
+    .down-icon {
+        bottom: 46px; /* Aapki original value */
+        right: 80px;
+    }
+}
+
+/* --- Extra Large / 4K Screens (2560px and up) --- */
+@media (min-width: 2560px) {
+    .top-icon img, .down-icon img {
+        width: 110px;
+    }
+    .top-icon {
+        top: 30px;
+        left: 120px;
+    }
+    .down-icon {
+        bottom: 60px;
+        right: 120px;
+    }
+}
+
+
+
 /* --- MEDIA QUERIES --- */
 
 /* 1. Tablets aur Chote Laptops (1024px tak) */
@@ -644,8 +720,8 @@
         gap:6px;
     }
     
-    .top-icon { left: 8%; }   /* Desktop ki badi pixel value ko kam kiya */
-    .down-icon { left: 36.5%; }
+    /* .top-icon { left: 8%; }    
+    .down-icon { left: 36.5%; } */
 }
 
 /* 2. Standard Mobile Phones (768px tak) */
@@ -670,22 +746,22 @@
     }
 
     /* Icons Adjustment for Mobile */
-    .top-icon {
+    /* .top-icon {
         top: 50px;
-        left: 3.1px;            /* Corner ke paas set kiya */
-    }
+        left: 3.1px;            
+    } */
 
-    .down-icon  img{
+    /* .down-icon  img{
       position: absolute;
         bottom: 2px;
         right:-5.2rem;
-                 /* Corner ke paas set kiya */
-             /* z-index:0; */
+                 
     }
 
     .top-icon img, .down-icon img {
-        width:40px;           /* Icon ka size 75px se 55px kiya */
+        width:40px;            
     }
+} */
 }
 
 /* 3. Small Mobiles (480px tak) */
@@ -697,17 +773,6 @@
     /* Optional: Agar mobile par icons gande lag rahe hain toh unhe hide kar sakte hain */
     /* .top-icon, .down-icon { display: none; } */
 }
-
-
-
-
-
-
- 
-
-
-
-
     /* section testimonial-strip*/
 
 .testimonial-wrapper {
@@ -721,9 +786,6 @@
     width: 100%;
 }
 
-
-
- 
   
   .testimonial-grid {
     display: flex;
@@ -733,11 +795,6 @@
     padding: 20px 0;
 }
 
-
-
-
- 
-  
   .testimonial-card {
     display: flex;
     flex-direction: column;
@@ -746,9 +803,6 @@
     flex: 0 0 calc(33.33% - 14px); 
     box-sizing: border-box;
 }
-
-
-
 
 
 /* Profile Photo Styling */
