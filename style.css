@@ -820,7 +820,14 @@
         padding: 0 10px;
     }
 } */
+@media (max-width: 1924px){ .testimonial-grid-container {
+        width: 100%; 
+        overflow: hidden;
+        padding: 0;
+    }
 
+
+}
  @media (max-width: 1024px) {
 
  /* 1. Grid container ko properly center karein */
