@@ -768,7 +768,7 @@
        .slider-controls {
     position: absolute;
     top: 55%;
-    width: 1300px;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);

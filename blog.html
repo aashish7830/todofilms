@@ -164,11 +164,12 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
+            padding: 0 2px;
         }
 
         .logo-ring {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             border: 7px solid #44767b; /* Teal color like your screenshot */
             display: flex;
@@ -197,7 +198,7 @@
         /* Responsive Settings */
         @media (max-width: 768px) {
              .impact-container {
-            width:300px;
+            width:400px;
             
             
         }
@@ -288,8 +289,8 @@
 
             </div>
             
-            <!-- <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 
@@ -415,7 +416,7 @@
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1, // Default for very small screens
-            spaceBetween: 30,
+            spaceBetween: -5,
             loop: true, // Infinite loop
             autoplay: {
                 delay: 2500, // 2.5 seconds mein automatic move hoga
@@ -430,6 +431,7 @@
                 // Jab screen 768px se badi ho (Laptop)
                 768: {
                     slidesPerView: 3, // 3 slides ek row mein
+                    spaceBetween: 20,
                 },
                 // Jab screen phone par ho
                 0: {
