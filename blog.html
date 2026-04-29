@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TwoDots Films - Reconstructed Layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    
+        /* Grid Container */
+        .reel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Columns */
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            margin-bottom:4rem;
+            margin-top:4rem;
+        }
+
+        /* Box Styling */
+        .reel-box {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            overflow: hidden;
+        }
+
+        .text-box {
+            background-color: #e5e8e8; /* Light gray background */
+        }
+
+        .image-box {
+            padding: 0; /* Remove padding for images */
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Typography */
+        .reel-box h3 {
+            font-size: 32px;
+            margin: 0;
+            color: #1a1a1a;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .reel-box p {
+            font-size: 20px;
+            margin: 10px 0 0; /* Margin-left: 70px ko hata diya gaya hai */
+             color: #333;
+                font-weight: 500;
+                 
+        }
+
+        /* --- Media Query for Mobile --- */
+        @media (max-width: 768px) {
+            .reel-header h2 {
+                font-size: 32px;
+            }
+
+            .reel-grid {
+                grid-template-columns: 1fr; /* Single Column */
+            }
+
+            .reel-box {
+                height: 300px;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            /* Mobile par order sahi karne ke liye (Optional) */
+            .mobile-first {
+                order: -1;
+            }
+        }
+
+
+
+
+
+        /* --- Media Query for Mobile --- */
+@media (max-width: 768px) {
+    .reel-grid {
+        display: flex; /* Grid ko Flex mein badla */
+        flex-direction: column; /* Sab kuch ek ke niche ek */
+        gap: 0; 
+    }
+
+    .reel-box {
+        height: auto; /* Content ke hisaab se height */
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    /* Magic Logic: Sabhi Text boxes ko order 1 aur Images ko order 2 */
+    /* Isse har pair mein Text automatic Image ke upar aa jayega */
+    .text-box {
+        order: 1; 
+    }
+    
+    .image-box {
+        order: 2;
+        height: 300px; /* Mobile par image ki height set ki */
+    }
+
+    /* Har pair (Text + Image) ko ek group ki tarah treat karne ke liye 
+       hum order property ko pairs mein manage karenge */
+    .reel-grid div:nth-child(1) { order: 1; } /* Text 1 */
+    .reel-grid div:nth-child(2) { order: 2; } /* Image 1 */
+    .reel-grid div:nth-child(3) { order: 4; } /* Image 2 (Desktop par pehle thi, mobile par niche jayegi) */
+    .reel-grid div:nth-child(4) { order: 3; } /* Text 2 (Desktop par baad mein thi, mobile par upar aayegi) */
+    .reel-grid div:nth-child(5) { order: 5; } /* Text 3 */
+    .reel-grid div:nth-child(6) { order: 6; } /* Image 3 */
+    .reel-grid div:nth-child(7) { order: 8; } /* Image 4 */
+    .reel-grid div:nth-child(8) { order: 7; } /* Text 4 */
+    .reel-grid div:nth-child(9) { order: 9; } /* Text 5 */
+    .reel-grid div:nth-child(10) { order: 10; } /* Image 5 */
+}
+  </style>
+  
+</head>
+<body>
+   
+     <header class="topbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo-animation.gif" alt="TwoDots Films Logo" class="logo-gif">
+        </a>
+    </div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="nav" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="reco.html">Recognition</a>
+        <a href="Blog.html">Portfolio</a>
+        <a href="review.html">Reviews</a>
+        
+        <a href="Blog.html">Blog</a>
+        <a href="#contact" class="btn mobile-btn">Get Started</a>
+    </nav>
+
+    <a href="#contact" class="btn desktop-btn">Get Started</a>
+</header>
+
+
+     
+
+    <section class="page-section">
+      <div class="section-banner"><h2 class="section-title">Digital <span class="accent">Impact Stories</span></h2></div>
+      <div class="impact-wrap">
+        <div class="impact-list">
+          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\DAV TV_LOGO_Alfa_Low.png" alt="DAV TV"></div></div>
+          <div class="impact-divider"></div>
+          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\Arya Yuva Samaj_Logo.png" alt="Arya Yuva Samaj"></div></div>
+          <div class="impact-divider"></div>
+          <div class="impact-item"><div class="circle"><img src="images\Digital_Impact_Stories\CAKBS_Logo Circle.png" alt="Superstars" style="width:99rem; height:99rem; max-width:none;"></div></div>
+        </div>
+      </div>
+
+      <div class="section-banner"><h2 class="section-title">Creative Content <span class="accent">Portfolio</span></h2></div>
+      
+    </section>
+
+   
+
+     <div class="reel-grid">
+        
+        <div class="reel-box text-box">
+            <h3>World Cup (Gaurav Kapur)</h3>
+            <p>Zee News Promo</p>
+        </div>
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\World Cup.png" alt="World Cup (Gaurav Kapur)">
+        </div>
+
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\KGOC.png" alt="KGOC Independence Day Film">
+        </div>
+        <div class="reel-box text-box">
+            <h3>KGOC Independence Day Film</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corporate Film </p>
+        </div>
+         <div class="reel-box text-box">
+            <h3>Antardwand</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short Film</p>
+        </div>
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\Antardwand.png" alt="Antardwand">
+        </div>
+
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\No Nasha Nation.png" alt="No Nasha Nation Anthem">
+        </div>
+        <div class="reel-box text-box">
+            <h3>No Nasha Nation Anthem</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anti-Drug Awareness Campaign</p>
+        </div>
+
+         <div class="reel-box text-box">
+            <h3>Why I ride | Vijay</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documentary</p>
+        </div>
+        <div class="reel-box image-box">
+            <img src="images\Creative Content Portfolio\Vijay.png" alt=" Vijay">
+        </div>
+
+    </div>
+    
+
+
+
+  <footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TwoDots Films</h4>
+      <p class="brand-desc">
+        With 25+ years of experience across advertising, media and broadcast.
+        We offer end-to-end solution, from creative storytelling & video production to digital strategy
+        and performance marketing; driving meaningful growth for brands across digital and broadcast platforms.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">The Team</a></li>
+        <li> <a href="Blog.html">Portfolio</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="reco.html">Recognition</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Link</h4>
+      <ul class="footer-links">
+        <li><a href="reco.html#contact-section">Contact US</a></li>
+        <div class="contact-info">
+        <p><strong>Email:</strong></p>
+        <p><a href="mailto:contact@2dotsfilms.com"  class="contact-info">contact@2dotsfilms.com</a></p>
+         
+      </div>
+            <div class="contact-info">
+        <p><strong>Phone:</strong></p>
+        <p><a href="tel:+919953655158" class="contact-info">+91 9953655158</a></p>
+        <p><a href="tel:+919873088079"  class="contact-info">+91 9873088079</a></p>
+        <p><a href="tel:+919911262034"  class="contact-info">+91 9911262034</a></p>
+      </div>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Information</h4>
+      <p>1556, Gaur City Mall, Greater Noida West, Gaur City 1, Sector 4, Greater Noida, UP-201318, India</p>
+      
+  
+      
+
+      <div class="socials">
+        <a href="https://www.youtube.com/@studio17filmz-Twodotsfilms" class="social-icon">▶</a>
+        <a href="https://www.facebook.com/2DotsFilms" class="social-icon">f</a>
+        <a href="https://www.linkedin.com/company/twodots-films/posts/?feedView=all" class="social-icon">in</a>
+        <a href="" class="social-icon">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

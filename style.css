@@ -1,0 +1,1371 @@
+
+    :root{
+      --bg:#d6dbda;
+      --panel:#dedede;
+      --white:#ffffff;
+      --dark:#264451;
+      --heading:#556771;
+      --accent:#42929D;
+      --muted:#8a8f94;
+      --line:#cfcfcf;
+      --quote:#42929D;
+      --card:#5b6b74;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;
+          font-size: 95%;
+        }
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:#2f2f2f;
+      line-height:1.45;
+    }
+ 
+ /* logo and nav */
+ a{text-decoration:none;color:inherit}
+
+    .topbar{
+      background:#E1E4E6;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 28px;
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+
+     /* logo */
+     .logo-gif {
+              height:70px;        
+                  width: auto;        
+                 display: block;
+                 transition: transform 0.3s ease;
+                 /* size:10px; */
+                  /*  */
+                 }
+
+/* Hover effect (Optional) */
+              .logo-gif:hover {
+             transform: scale(1.05);
+         }
+         .logo img{
+          height:70px;        
+                  width: auto; 
+
+         }
+    
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      color:#70777b;
+      font-size:16px;
+      font-weight:600;
+    }
+
+
+    .btn{
+      background:var(--dark);
+      color:#fff;
+      padding:14px 28px;
+      border-radius:10px;
+      font-weight:800;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      cursor:pointer;
+    }
+
+   
+
+/* Desktop Buttons hide/show logic */
+.mobile-btn { display: none; }
+
+.menu-toggle {
+    display: none; /* Desktop par chhupa rahega */
+    flex-direction: column;
+    gap:5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 10px;
+}
+
+/* --- Media Query for Mobile (768px) --- */
+@media (max-width: 768px) {
+    .topbar {
+        padding: 10px 15px; /* Height kam karne ke liye padding ghatayi */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 60px; /* Header ki height control karne ke liye */
+    }
+
+    /* 1. Menu Button (Left Side) */
+    .menu-toggle {
+        display: flex;
+        order: 1; /* Sabse pehle dikhega */
+    }
+
+    /* 2. Logo (Center Side) */
+    .logo {
+        order: 2; /* Beech mein dikhega */
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .logo-gif {
+        height: 55px; /* Logo ka size thoda chhota kiya mobile ke liye */
+        margin: 0 auto;
+    }
+
+    /* 3. Get Started Button (Right Side) */
+    .desktop-btn {
+        display: inline-flex; /* Mobile par wapas dikhaya */
+        order: 3; /* Sabse aakhri mein */
+        padding: 8px 15px; /* Button chhota kiya */
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    /* Menu Bar (Overlay) ki height aur width kam karne ke liye */
+    .nav {
+        position: fixed;
+        top: 60px; /* Header ki nayi height ke hisaab se */
+        left: -100%;
+        width: 30%; /* Width kam karke 70% kar di */
+        height: auto; /* Full height ki jagah auto */
+        max-height: 400px; /* Height limit kar di */
+        background: #E1E4E6;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        border-bottom-right-radius: 15px;
+        transition: 0.4s;
+    }
+
+    .nav.active {
+        left: 0;
+    }
+
+    /* Mobile ke andar wala button hide rakhein kyunki ab header mein hi button hai */
+    .mobile-btn {
+        display: none;
+    }
+}
+
+    
+   
+
+    .hero{
+      position:relative;
+      min-height:640px;
+      overflow:hidden;
+      background:#161616;
+    }
+
+    .hero img.bg{
+      width:100%;
+      height:640px;
+      object-fit:cover;
+      opacity:.92;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.15) 45%,rgba(0,0,0,.45));
+    }
+
+    .hero-copy{
+      position:absolute;
+      left:24px;
+      bottom:28px;
+      color:#fff;
+      max-width:720px;
+      z-index:2;
+    }
+
+    .hero-copy h1{
+        margin-left:0.7rem;
+        margin-top:0.2rem;
+      font-size:68px;
+      line-height:.95;
+      font-weight:900;
+      /* margin-bottom:16px; */
+      color:rgb(198, 198, 198);
+
+    }
+
+    .hero-copy h1 .accent,
+    .title .accent,
+    .section-title .accent,
+    .newsletter-title .accent{
+      color:var(--accent);
+    }
+
+    .hero-copy p{
+      font-size:20px;
+      line-height:1.6;
+      max-width:1300px;
+      margin-top:1.6rem;
+      margin-left:-1rem;
+      width:1001px;
+    }
+
+    .hero-right{
+      position:absolute;
+      right:29px;
+      bottom:30px;
+    color:rgb(198, 198, 198);
+      font-size:70px;
+      font-weight:800;
+      margin-right:1rem;
+
+      /* z-index:2; */
+      /* text-align:right; */
+    }
+
+   /* corner mark */
+ /* Pehle design ka container (Top-Left) */
+        .teal-box-1 {
+            position: absolute;
+            top:-1rem;
+            left:-1rem;
+            width: 100px;
+            height: 200px;
+        }
+
+        /* Dusre design ka container (Bottom-Right) */
+        .teal-box-2 {
+            position: absolute;
+            bottom: 20px;
+            right: 120px; /* Circle ki width adjust karne ke liye */
+            width: 100px;
+            height: 100px;
+            margin-right:-9rem;
+            margin-bottom:-2rem;
+        }
+
+        /* --- Common Styles for Shapes --- */
+
+        /* Sidha L-Shape */
+        .teal-box {
+            position: absolute;
+            width: 70px; 
+            height: 70px;
+            background-color: #2e838b;
+            /* clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 40% 25%, 40% 100%, 0% 100%); */
+            clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
+        }
+
+        /* Sidha Circle */
+        .bottom-circle {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #4E5D61;
+            border-radius: 50%;
+            top: 75px; /* L-shape ke thik niche */
+            left:-1px;
+        }
+
+        /* Ulta L-Shape */
+        .teal-box-u {
+            position: absolute;
+            width:70px;
+            height: 70px;
+            background-color: #4E5D61;
+            transform: rotate(180deg);
+             clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
+        }
+
+        /* Ulta Circle (Jo ab upar dikhega) */
+        .bottom-circle-u {
+            position: absolute;
+            right:30px; /* Inverted L ke corner se match karne ke liye */
+            width: 25px;
+            height: 25px;
+           
+             background-color: #2e838b;
+            border-radius: 50%;
+            top: -30px; /* L-shape ke upar positioning */
+        }
+
+
+
+
+        /* 2 section design */
+ 
+        
+
+        /* Pehle design ka container (Top-Left) */
+        .teal-box-12 {
+            position: absolute;
+            top:19px;
+            left:250px;
+            width: 100px;
+            height: 200px;
+        }
+
+        /* Dusre design ka container (Bottom-Right) */
+        .teal-box-22 {
+            position: absolute;
+            bottom:15px;
+            right:90px; /* Circle ki width adjust karne ke liye */
+            width: 100px;
+            height: 100px;
+        }
+
+        /* --- Common Styles for Shapes --- */
+
+        /* Sidha L-Shape */
+       .teal-box2 {
+    position: absolute;
+    /* Height aur Width ko image ke hisaab se 100px rakha hai */
+    width: 100px; 
+    height: 100px;
+    background-color: #2e838b;
+    /* Is clip-path se L-shape ki dono sides barabar moti (30%) dikhengi */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
+    top:-11px; 
+    left:-4px; 
+}
+
+/* Sidha Circle */
+.bottom-circle2 {
+    position: absolute;
+    /* Image mein circle L-shape ki dandi se thoda chhota hai */
+    width: 30px; 
+    height: 30px;
+    background-color: #4E5D61;
+    border-radius: 50%;
+    /* Position ko L-shape ke vertical part ke niche set kiya gaya hai */
+    top:95px; 
+    left:-4px; 
+  }
+
+        /* Ulta L-Shape */
+        .teal-box-u2 {
+            position: absolute;
+             right:155px;
+            width: 100px; 
+           height: 100px;
+           bottom:20px;
+             background-color: #4E5D61;
+            transform: rotate(180deg);
+           clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
+        }
+
+        /* Ulta Circle (Jo ab upar dikhega) */
+        .bottom-circle-u2 {
+            position: absolute;
+            right:155px; /* Inverted L ke corner se match karne ke liye */
+            width:30px;
+            height:30px;
+           
+            background-color: #377378;
+            border-radius: 50%;
+            bottom:123px; /* L-shape ke upar positioning */
+        }
+    
+
+
+
+
+/* logo design for  */
+  /* Pehle design ka container (Top-Left) */
+        .teal-box-123 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 200px;
+        }
+
+        /* Dusre design ka container (Bottom-Right) */
+        .teal-box-223 {
+            position: absolute;
+            /* bottom: 20px; */
+            left:119px; /* Circle ki width adjust karne ke liye */
+            width: 100px;
+            height: 100px;
+            top:40px;
+        }
+
+        /* --- Common Styles for Shapes --- */
+
+        /* Sidha L-Shape */
+        .teal-box23 {
+            position: absolute;
+            width:20px;
+            height:20px;
+            background-color: #44767b;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 20% 25%, 20% 100%, 0% 100%);
+        }
+
+        /* Sidha Circle3 */
+        .bottom-circle23 {
+            position: absolute;
+            width:8px;
+            height:8px;
+            background-color: #4E5D61;
+            border-radius: 50%;
+            top:22px; /* L-shape ke thik niche */
+            margin-left:-2px;
+        }
+
+        /* Ulta L-Shape */
+        .teal-box-u23 {
+            position: absolute;
+            width:20px;
+            height:20px;
+            background-color: #44767b;
+            transform: rotate(180deg);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 20% 25%, 20% 100%, 0% 100%);
+        }
+
+        /* Ulta Circle (Jo ab upar dikhega) */
+        .bottom-circle-u23 {
+            position: absolute;
+            left:13px; /* Inverted L ke corner se match karne ke liye */
+            width:8px;
+            height:8px;
+            background-color: #4E5D61;
+            border-radius: 50%;
+            top: -10px; /* L-shape ke upar positioning */
+        }
+
+
+
+
+
+
+
+
+.service-btn1 {
+    text-decoration: none;
+    /* Anchor ko inline-block dene se ye content jitni jagah hi lega */
+    display: inline-block; 
+}
+
+    .headline-block{
+      padding:38px 20px 50px;
+      text-align:center;
+      background:#dfdfdf;
+    }
+
+    .headline-block h2{
+      color:#4B9EA8;
+      font-size:74px;
+      font-weight:900;
+      line-height:1.15;
+      text-transform:uppercase;
+      
+      /* letter-spacing:-1px; */
+    }
+    .service-btn1 h2 {
+    color: #4B9EA8;
+    font-size: 74px;
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+    margin: 0;
+
+    /* Sabse zaroori: Isse h2 poori width nahi lega */
+    display: inline-block; 
+    
+    /* Animation ko smooth (professional) banane ke liye transition yahan add karein */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                color 0.3s ease;
+    
+    cursor: pointer;
+}
+
+    /* Hover Effect */
+/* .service-btn1:hover h2 {
+    color: #0cc7cd; 
+    transform: translateY(-3px);  
+} */
+.service-btn1:hover h2 {
+    color: #0cc7cd; 
+    transform: translateY(-8px) scale(1.02); /* Thoda stylish lift aur growth */
+}
+.service-btn1:active h2 {
+    transform: translateY(-2px) scale(0.98);
+}
+    /* Mobile Devices ke liye Media Query (up to 767px) */
+@media only screen and (max-width: 767px) {
+    .headline-block {
+        /* Mobile par padding thodi kam kar di taaki space bache */
+        padding: 30px 15px 40px;
+    }
+
+    .headline-block h2 {
+        /* Font size ko 74px se kam karke mobile ke hisaab se set kiya */
+        font-size:20px; 
+        
+        /* Line height aur spacing ko tight rakha taaki laptop jaisa 'bold' look aaye */
+        line-height: 1.2;
+        letter-spacing: 0px;
+        
+        /* Ye ensure karega ki bada word screen se bahar na nikal jaye */
+        word-wrap: break-word;
+    }
+}
+
+    .section-banner{
+      background:#e6e6e6;
+      text-align:center;
+      padding:26px 20px;
+    }
+
+    .section-title{
+      font-size:72px;
+      font-weight:900;
+      color:var(--heading);
+      line-height:1.05;
+    }
+
+/* Mobile screens ke liye adjustments */
+@media only screen and (max-width: 767px) {
+    .section-banner {
+        /* Mobile par padding thodi kam taaki banner compact lage */
+        padding: 20px 15px;
+    }
+    
+    .section-title {
+        /* 72px ko mobile ke liye 34px-38px ke beech rakhna best hai */
+        font-size: 26px;
+        
+        /* Line height ko thoda adjust kiya taaki words ek dusre se chipke na */
+        line-height: 1.2;
+        
+        /* Ensure karega ki heading center mein hi rahe */
+        text-align: center;
+    }
+    .section-banner-p{
+        font-size:10px;
+    }
+     
+
+}
+
+  /* clients */
+  /* logo icon news */
+
+
+
+    .clients{
+      padding:42px 70px 70px;
+      position:relative;
+    }
+
+    .client-grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:7px;
+      max-width:1120px;
+      margin:0 auto;
+    }
+
+    .client-card{
+      /* background:#f5f5f5; */
+      aspect-ratio:1/1.3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:-0.7px;
+      /* border:0.1px solid #ececec; */
+      overflow:hidden;
+    }
+
+    .client-card img{
+        max-height:100%;
+        /* width:110%; */
+        object-fit:contain
+    }
+    .top-icon {
+    position: absolute;
+    /* Screenshot ke hisaab se icon ko top-left corner par set karne ke liye */
+    top: 18px;         /* Isse icon border line ke upar aa jayega */
+    left: 82px;        /* Isse icon corner ke thoda bahar/upar set hoga */
+    z-index: 10;        /* Taaki ye border ke upar dikhe */
+}
+
+.top-icon img {
+    /* Screenshot ke hisaab se width 60px se 80px ke beech honi chahiye */
+    width: 75px;        
+    height: auto;       /* Aspect ratio maintain rakhne ke liye */
+    display: block;
+    
+    /* Agar image ke piche ki line chhupani hai toh background de sakte hain */
+    /* background-color: #e0e6e6; Apne section ka background color yahan likhein */
+    padding: 0 5px;
+}
+
+
+/* second icon */
+  .down-icon {
+    position: absolute;
+    /* Screenshot ke hisaab se icon ko top-left corner par set karne ke liye */
+    bottom: 46px;         /* Isse icon border line ke upar aa jayega */
+    right: 80px;        /* Isse icon corner ke thoda bahar/upar set hoga */
+    z-index: 10;        /* Taaki ye border ke upar dikhe */
+}
+
+.down-icon img {
+    /* Screenshot ke hisaab se width 60px se 80px ke beech honi chahiye */
+    width: 75px;        
+    height: auto;       /* Aspect ratio maintain rakhne ke liye */
+    display: block;
+    
+    /* Agar image ke piche ki line chhupani hai toh background de sakte hain */
+    /* background-color: #e0e6e6; Apne section ka background color yahan likhein */
+    padding: 0 5px;
+}
+/* --- MEDIA QUERIES --- */
+
+/* 1. Tablets aur Chote Laptops (1024px tak) */
+@media (max-width: 1024px) {
+    .client-grid {
+        grid-template-columns: repeat(5, 1fr); /* 7 columns se 5 columns */
+        gap:6px;
+    }
+    
+    .top-icon { left: 8%; }   /* Desktop ki badi pixel value ko kam kiya */
+    .down-icon { left: 36.5%; }
+}
+
+/* 2. Standard Mobile Phones (768px tak) */
+@media (max-width: 768px) {
+    .clients {
+        padding: 60px 20px;    /* Sides ki padding kam ki taaki grid ko jagah mile */
+    }
+
+    .client-grid {
+         grid-template-columns: repeat(3, 1fr);  
+        /* grid-template-columns: repeat(4, 1fr); */
+        /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+        gap: 8px;
+    }
+
+    .client-card {
+        padding: 1px;          /* Card ke andar ki jagah kam ki */
+    }
+
+    .client-card img {
+        max-height: 200px;      /* Logo ka size chhota kiya */
+    }
+
+    /* Icons Adjustment for Mobile */
+    .top-icon {
+        top: 50px;
+        left: 3.1px;            /* Corner ke paas set kiya */
+    }
+
+    .down-icon  img{
+      position: absolute;
+        bottom: 2px;
+        right:-5.2rem;
+                 /* Corner ke paas set kiya */
+             /* z-index:0; */
+    }
+
+    .top-icon img, .down-icon img {
+        width:40px;           /* Icon ka size 75px se 55px kiya */
+    }
+}
+
+/* 3. Small Mobiles (480px tak) */
+@media (max-width: 480px) {
+    .client-grid {
+        grid-template-columns: repeat(2, 1fr); /* Bahut chote phone par 2 columns */
+    }
+    
+    /* Optional: Agar mobile par icons gande lag rahe hain toh unhe hide kar sakte hain */
+    /* .top-icon, .down-icon { display: none; } */
+}
+
+
+
+
+
+
+ 
+
+
+
+
+    /* section testimonial-strip*/
+
+.testimonial-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0; /* Padding adjust ki */
+    background-color: #d6dbda;
+    position: relative;
+    overflow: hidden; /* Bahar wala content hide karne ke liye */
+    width: 100%;
+}
+
+
+
+ 
+  
+  .testimonial-grid {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    /* Gap ko positive rakhein taaki movement calculate ho sake */
+    gap: 20px; 
+    padding: 20px 0;
+}
+
+
+
+
+ 
+  
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Formula: (100% / 3 cards) - gap adjust */
+    flex: 0 0 calc(33.33% - 14px); 
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* Profile Photo Styling */
+/* 
+ */
+ .profile-container {
+    width: 180px; /* Size thoda set kiya */
+    margin-bottom: 5px; /* Overlap effect ke liye negative margin bottom use karein */
+    z-index: 2;
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+}
+
+/* Background Box Styling */
+.testimonial-bg-box {
+    background-image: url('images/What Our Cliets Say/Box.png'); 
+    background-size: 100% 100%; /* Full box display */
+    background-repeat: no-repeat;
+    width: 90%; /* Card ki width ke hisab se automatic adjust hoga */
+    padding: 60px 25px 30px; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* min-height: 10%; */
+    height:150px;
+}
+
+.testimonial-text {
+    color: #4f5a60;
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: left;
+    margin-top:-50px;
+}
+
+.author-name {
+    margin-top: 10px;
+    color: #173847;
+    font-weight: 800;
+}
+
+/* --- Mobile Responsive --- */
+ 
+
+
+
+
+ /* Slider Controls (Arrows) */
+       .slider-controls {
+    position: absolute;
+    top: 55%;
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+        .arrow {
+    color: rgb(21, 126, 158);
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    background: transparent;
+    pointer-events: auto;
+    transition: 0.3s;
+    padding: 0 10px;
+}
+
+        .arrow:hover { 
+    color: #1cbfd2; 
+    transform: scale(1.1);
+}
+    
+
+          /* Grid Setup */
+        /* .testimonial-grid-container {
+            max-width: 1340px;
+            overflow: hidden;
+            width: 100%;
+        } */
+
+          .testimonial-grid-container {
+    max-width: 1200px; /* Isse 3 cards ka view limit hoga */
+    width: 90%;
+    overflow: hidden; /* Double safety for cutting cards */
+    margin: 0 auto;
+}
+
+
+/* --- Mobile & Tablet Responsive --- */
+
+/* @media (max-width: 1024px) { */
+    /* Tablet par 2 cards dikhane ke liye */
+    /* .testimonial-card {
+        flex: 0 0 calc(50% - 10px); 
+    }
+    .slider-controls {
+        width: 100%;
+        padding: 0 10px;
+    }
+} */
+
+ @media (max-width: 1024px) {
+
+ /* 1. Grid container ko properly center karein */
+    .testimonial-grid-container {
+        width: 90%; 
+        overflow: hidden;
+        padding: 0;
+    }
+
+    /* 2. Gap ko 0 karein, warna cards align nahi honge */
+     
+
+    /* 3. Card ko pure 100% par rakhein bina kisi margin ke */
+    .testimonial-bg-box {
+        width: 100%; /* Ab ye container ke andar fit rahega */
+        height: auto;
+        min-height: 150px;
+        padding: 50px 20px 20px;
+        /* font-size:23px; */
+    }
+    .testimonial-text {
+    color: #4f5a60;
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: left;
+    margin-top:-40px;
+}
+
+.author-name {
+    /* margin-top: 10px; */
+    color: #173847;
+    /* font-weight: 800; */
+}
+
+    /* 4. Background box ki width adjust karein */
+    
+
+    /* 5. Arrows ko responsive banayein */
+    .slider-controls {
+        width: 100%;
+        top: 30%;
+        left: 0;
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. Grid container ko properly center karein */
+    .testimonial-grid-container {
+        width: 100%; 
+        overflow: hidden;
+        padding: 0;
+    }
+
+    /* 2. Gap ko 0 karein, warna cards align nahi honge */
+    .testimonial-grid {
+        gap: 0; 
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    /* 3. Card ko pure 100% par rakhein bina kisi margin ke */
+    .testimonial-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 15px; /* Side spacing ke liye padding use karein */
+        box-sizing: border-box;
+    }
+
+    /* 4. Background box ki width adjust karein */
+    .testimonial-bg-box {
+        width: 90%; /* Ab ye container ke andar fit rahega */
+        height: auto;
+        min-height: 150px;
+        padding: 50px 20px 20px;
+    }
+      .testimonial-text {
+    color: #4f5a60;
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: left;
+    margin-top:-40px;
+    /* margin-left:10px; */
+}
+
+.author-name {
+    margin-top: 10px;
+    color: #173847;
+    /* font-weight: 800; */
+}
+    /* 5. Arrows ko responsive banayein */
+    .slider-controls {
+        width: 100%;
+        top: 30%;
+        left: 0;
+        padding: 0 5px;
+    }
+}
+
+
+  
+
+    /* footer */
+
+   /* footer */
+.footer {
+  background: var(--dark);
+  color: #fff;
+  padding: 60px 46px 40px; /* Padding thodi badhayi hai balance ke liye */
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.6fr;
+  gap: 42px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer h4 {
+  font-size: 28px; /* 33px thoda bada tha, 28px zyada professional hai */
+  margin-bottom: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.footer p,
+.footer a {
+  color: #ebf2f5;
+  font-size: 14px;
+  line-height: 1.8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Links list formatting */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+  color: var(--accent); /* Hover karne par color badlega */
+}
+
+.footer .brand-desc {
+  max-width: 320px;
+  opacity: 0.9;
+}
+
+.contact-info {
+  margin-top: 15px;
+}
+
+.contact-info p {
+  line-height: 1.5;
+}
+
+/* Social Icons Styles */
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #466270;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff !important;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--accent);
+  transform: translateY(-3px); /* Hover par halka upar uthega */
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr; /* Tablet par 2 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 40px 20px;
+    text-align:center;
+  }
+    .socials{
+     text-align:center;
+     padding: 5px 70px;
+
+  }
+  .footer-grid {
+    grid-template-columns: 1fr; /* Mobile par 1 column */
+    gap: 30px;
+  }
+  .footer .brand-desc {
+    max-width: 100%;
+  }
+}
+
+
+
+
+/* team page */
+ /* Avatar Container Stylings */
+.avatar-ring {
+    display: inline-block; /* Aligns with text below */
+     
+    /* 2. Positioning for text grouping */
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+.avatar-ring img {
+    width: 210px;
+    height: 260px;
+     
+    display: block;
+}
+
+
+
+
+
+
+   
+
+    .page-section{margin-top:0;}
+
+ 
+ 
+
+    .reel-wrap{padding:40px 78px 58px}
+    .reel-grid,
+    .portfolio-grid,
+    .success-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:#dedede;
+      gap:0;
+    }
+
+    .split-card{
+      min-height:280px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#dfdfdf
+    }
+    .split-card.text{padding:40px 50px;justify-content:flex-start;align-items:center}
+    .split-card.text h3{font-size:32px;line-height:1.15;font-weight:900;color:#1f1f1f}
+    .split-card.text p{font-size:18px;color:#222}
+    .split-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .impact-wrap{padding:34px 40px 52px}
+    .impact-list{display:flex;flex-direction:column;gap:34px;align-items:center}
+    .impact-item{width:240px;text-align:center}
+    .impact-item .circle{width:190px;height:190px;margin:0 auto;border:6px solid var(--accent);border-radius:50%;background:#f2f2f2;padding:14px;display:flex;align-items:center;justify-content:center}
+    .impact-item img{max-width:120px;max-height:120px;object-fit:contain}
+    .impact-divider{width:290px;height:1px;background:#9ca5aa}
+
+    .portfolio-wrap{padding:40px 78px 58px}
+    .portfolio-grid .split-card{min-height:236px}
+
+    .team-wrap{padding:42px 40px 60px;text-align:center}
+    .team-intro{max-width:1120px;margin:16px auto 36px;font-size:20px;color:#2f2f2f;font-weight:500}
+    .team-list{display:flex;flex-direction:column;gap:42px;align-items:center}
+    .team-member{max-width:980px;text-align:center}
+    .team-member .avatar-ring{width:215px;height:215px;border-width:7px}
+    .team-member h3{font-size:24px;font-weight:800;color:var(--accent);margin-top:14px}
+    .team-member .role{font-size:13px;color:#879196;margin-bottom:10px}
+    .team-member p{font-size:14px;color:#8b8b8b;max-width:900px;margin:0 auto}
+
+    .awards-wrap{
+      padding:38px 60px 22px
+    }
+    .awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:44px 46px;max-width:1080px;margin:0 auto}
+    .award{
+      text-align:center}
+
+
+
+    .award .big-ring{width:370px;
+      height:360px;
+      /* border:10px solid var(--accent); */
+      /* border-radius:50%; */
+      padding:12px;
+      /* background:#dde3e5; */
+      /* position:relative; */
+      margin:0 auto 18px
+    }
+
+
+
+
+    .award .big-ring::before,.award .big-ring::after{
+      /* content:""; */
+      position:absolute;
+      /* top:50%; */
+      /* width:16px; */
+      /* height:16px; */
+      /* border-radius:50%; */
+      /* background:#6c7379; */
+      transform:translateY(-50%)
+    }
+
+
+
+    .award .big-ring::before{left:-11px}
+    .award .big-ring::after{right:-11px}
+    .award .big-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .award h3{
+        font-size:21px;
+        font-weight:800;
+        color:#1f2529;
+        margin-top:-20px;
+    }
+
+    .contact-lead{padding-bottom:20px}
+    .contact-lead p{text-align:center;font-size:21px;color:#222;font-weight:500;padding:0 20px 18px}
+    .contact-box{max-width:1120px;margin:34px auto 0;border:2px solid #8f979b;border-radius:28px;padding:46px}
+    .form-grid{display:grid;gap:22px}
+    .input, .textarea{
+      width:100%;padding:18px 22px;border:2px solid #c5cbce;border-radius:34px;background:transparent;font-size:18px;outline:none;color:#222;
+    }
+    .textarea{min-height:220px;border-radius:28px;resize:vertical}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .newsletter{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;padding:60px 44px 24px}
+    .newsletter-title{
+        font-size:52px;
+        line-height:1.02;
+        font-weight:600;
+        color:#54626C;
+    }
+    .newsletter-form{display:flex;gap:16px;align-items:center}
+    .newsletter-form .input{padding:16px 20px;font-size:16px}
+
+    .reviews-wrap{padding:32px 40px 50px}
+    .reviews-wrap{
+         /* display: grid; */
+             
+            width: 100%;
+            max-width: 1330px;
+            /* margin: 0 auto; */
+            /* margin-bottom:4rem; */
+            /* margin-top:4rem; */
+            margin-left:7%;
+              
+    }
+    .review-header{text-align:center;padding-top:18px}
+    .review-header .section-title{display:inline-block;position:relative}
+    .review-header .subline{
+      display:block;
+      background:#60717a;
+      color:#fff;
+      font-size:26px;
+      letter-spacing:1px;
+      padding:2px 16px;
+      margin-top:6px;
+      /* margin-left:30%; */
+      width:584px;
+      font-weight:600;
+      text-align:center;
+
+    }
+    .review-box{background:#000;color:#fff;padding:26px 24px;margin-top:26px}
+    .review-top-btn{background:#f4f4f4;color:#444;border:none;padding:12px 18px;border-radius:6px;font-size:14px;margin-bottom:22px}
+    .review-summary{padding:10px 0 20px;border-top:1px solid #393939;border-bottom:1px solid #393939;color:#fff}
+    .stars{color:#ffb037;font-size:22px;letter-spacing:1px}
+    .review-item{padding:22px 0;border-bottom:1px solid #393939}
+    .review-item:last-child{border-bottom:none}
+    .review-meta{font-size:15px;margin-bottom:10px}
+    .review-title{font-size:18px;color:#d7d7d7;margin-bottom:8px}
+    .review-body{font-size:18px;line-height:1.7;max-width:1180px;margin-left:58px}
+    .review-reply{font-size:17px;line-height:1.7;margin:26px 0 0 58px}
+
+    .success-wrap{padding:24px 78px 62px}
+    .success-intro{
+       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Clean Sans-serif font */
+    font-size: 32px; /* Screenshot ke hisaab se perfect size */
+    font-weight: 600; /* Semi-bold look */
+    color: #001d2a; /* Deep dark blue/charcoal color jo image mein hai */
+    text-align: center; /* Center alignment */
+    padding: 20px;
+     
+    
+    /* Letter spacing ko thoda kam kiya hai compact look ke liye */
+    letter-spacing: -0.2px; 
+    /* line-height: 1; */
+    top:40px;
+
+    }
+    .success-grid .split-card{min-height:276px}
+    .success-grid .text{justify-content:center}
+
+    .muted{color:#717c82}
+ 
+
+
+/* --- Mobile Responsive Media Query (Max 767px) --- */
+@media only screen and (max-width: 767px) {
+    
+    /* 1. General Wrappers (Paddings kam ki gayi hain) */
+    .reel-wrap, .portfolio-wrap, .success-wrap, .awards-wrap, .reviews-wrap, .impact-wrap, .team-wrap {
+        padding: 30px 15px !important;
+    }
+
+    /* 2. Grids ko Single Column mein convert kiya (Reels, Portfolio, Success) */
+    .reel-grid, .portfolio-grid, .success-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .split-card {
+        min-height: auto !important;
+        flex-direction: column;
+    }
+
+    .split-card.text {
+        padding: 25px 20px !important;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .split-card.text h3 {
+        font-size: 24px !important;
+    }
+
+    /* 3. Impact Items & Team */
+    .impact-list, .team-list {
+        gap: 25px !important;
+    }
+
+    .impact-divider {
+        width: 100% !important;
+        max-width: 200px;
+    }
+
+    .team-member p {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    /* 4. Awards Grid (2 column se 1 column) */
+    .awards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .award .big-ring {
+        width: 260px !important; /* Mobile ke liye size chota kiya */
+        height: 260px !important;
+    }
+
+    /* 5. Contact Form & Newsletter */
+    .contact-box {
+        padding: 25px 15px !important;
+        margin: 20px 10px;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr !important; /* First Name/Last Name ek ke niche ek */
+        gap: 15px;
+    }
+
+    .newsletter {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        padding: 40px 20px !important;
+    }
+
+    .newsletter-title {
+        font-size: 32px !important;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* 6. Reviews Section (Center alignment) */
+    .review-header .subline {
+        
+       
+        font-size: 18px !important;
+    }
+
+    .review-body, .review-reply {
+        margin-left: 0 !important;
+        padding: 10px;
+        font-size: 16px !important;
+    }
+}

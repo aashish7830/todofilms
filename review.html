@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TwoDots Films - Reconstructed Layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="style.css" rel="stylesheet">
+  <style>
+      /* Grid Container */
+        .reel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Columns */
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            margin-bottom:29px;
+            margin-top:4rem;
+        }
+
+        /* Box Styling */
+        .reel-box {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            overflow: hidden;
+            /* text-align: center; */
+        }
+
+        .text-box {
+            background-color: #e5e8e8; /* Light gray background */
+        }
+
+        .image-box {
+            padding: 0; /* Remove padding for images */
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Typography */
+  
+.reel-box h3 {
+    font-family: 'Arial Black', 'Arial', sans-serif; /* Heavy font for Nexa */
+    font-size: 40px; /* Large heading */
+    font-weight: 900;
+    color: #546670;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -1.5px; /* Nexa wale text mein letters kafi paas hain */
+    text-align: center;
+}
+
+.reel-box p {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px; /* Subheading size */
+    font-weight: 700; /* Commercial thoda bold hai image mein */
+    color: #546670;
+    margin: 0px 0 0; /* Heading ke ekdum niche */
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-left:140px;
+}
+ 
+        /* --- Media Query for Mobile --- */
+  /* --- Media Query for Mobile --- */
+@media (max-width: 768px) {
+    .reel-grid {
+        display: flex; /* Flex use karna order ke liye best hai */
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .reel-box {
+        height: auto;
+        min-height: 250px;
+        padding: 40px 20px;
+        width: 100%;
+    }
+
+    /* --- ORDER LOGIC --- */
+    /* Hum har pair ko target kar rahe hain taaki A-B, A-B ka pattern bane */
+
+    /* Row 1: Sundar Pichai (Pehle se sahi hai 1-2) */
+
+    /* Row 2: Satya Nadella (Image-Text ko reverse karenge) */
+    .reel-grid .reel-box:nth-child(3) { order: 4; } /* Image niche */
+    .reel-grid .reel-box:nth-child(4) { order: 3; } /* Text upar */
+
+    /* Row 3: Elon Musk (Pehle se Text-Image hai 5-6) */
+    .reel-grid .reel-box:nth-child(5) { order: 5; }
+    .reel-grid .reel-box:nth-child(6) { order: 6; }
+
+    /* Row 4: Jeff Bezos (Image-Text ko reverse karenge) */
+    .reel-grid .reel-box:nth-child(7) { order: 8; } /* Image niche */
+    .reel-grid .reel-box:nth-child(8) { order: 7; } /* Text upar */
+
+
+    /* --- Typography Fixes --- */
+    .reel-box h3 {
+        font-size: 28px;
+        text-align: center;
+        letter-spacing: -1px;
+    }
+
+    .reel-box p {
+        font-size: 18px;
+        margin-left: 0 !important; /* Aapka inline margin-left reset */
+        text-align: center;
+        width: 100%;
+    }
+
+    /* HTML mein jo &nbsp; space thi use hata kar spacing center karein */
+    .reel-box p {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+
+.testimonial-section {
+            width: 100%;
+            max-width: 1250px;
+            text-align: center;
+            padding: 20px;
+            margin-left:10%;
+        }
+
+        
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden; /* Bahar ka content hide rakhta hai */
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            /* Desktop par 3 cards ka logic */
+            flex: 0 0 calc(33.33% - 20px);
+            margin-right: 20px; 
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            text-align: left;
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .user-info {
+            margin-left: 15px;
+            flex-grow: 1;
+        }
+
+        .user-info h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .stars {
+            color: #ffb400;
+            font-size: 12px;
+        }
+
+        .quote-icon {
+            font-size: 35px;
+            color: #e3effb;
+            position: absolute;
+            right: 25px;
+            top: 25px;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* Dots Styling */
+        .dots-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #d1d9e6;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background-color: #2e7bb8;
+            transform: scale(1.3);
+        }
+
+        /* --- Responsive Settings --- */
+
+        /* Tablet (2 cards) */
+        @media (max-width: 900px) {
+            .testimonial-card {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        /* Mobile Phone (1 card - No Cutting) */
+        @media (max-width: 600px) {
+            .testimonial-card {
+                flex: 0 0 100%; /* Card puri width lega */
+                margin-right: 0; /* Mobile par gap remove kar diya taaki slide na kategi */
+                padding: 20px;
+            }
+            .slider-wrapper {
+                gap: 0;
+            }
+        }
+
+
+
+  </style>
+  
+  
+  <style>
+  
+  .review-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.review-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-header .section-title {
+    margin: 0 0 14px;
+    text-align: center;
+    line-height: 1.05;
+}
+
+.review-header .subline {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 420px;   /* adjust as needed */
+    padding: 10px 30px;
+    margin: 0 auto;
+}
+  </style>
+  
+</head>
+<body>
+   
+   <header class="topbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo-animation.gif" alt="TwoDots Films Logo" class="logo-gif">
+        </a>
+    </div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="nav" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="reco.html">Recognition</a>
+        <a href="Blog.html">Portfolio</a>
+        <a href="review.html">Reviews</a>
+        
+        <a href="Blog.html">Blog</a>
+        <a href="#contact" class="btn mobile-btn">Get Started</a>
+    </nav>
+
+    <a href="#contact" class="btn desktop-btn">Get Started</a>
+</header>
+
+ <section class="page-section" id="reviews">
+    <div class="section-banner review-header">
+        <div class="review-title-wrap">
+            <h2 class="section-title">Add <span class="accent">Your Words</span></h2>
+            <span class="subline">THEY INSPIRE US</span>
+        </div>
+    </div>
+      <!-- <div class="reviews-wrap">
+        <div class="review-box">
+          <button class="review-top-btn">Create your own review</button>
+          <div class="review-summary">
+            <div style="font-size:34px;font-style:italic">Studio17filmz</div>
+            <div style="margin-top:6px;font-size:18px">Average rating: <span class="stars">★★★★★</span> <span class="muted" style="color:#fff">16 reviews</span></div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-meta"><span class="stars">★★★★★</span> <em>May 27, 2025 by Ashish</em></div>
+            <div class="review-body">Studio17filmz delivered exceptional video editing and videography for our ad campaign, perfectly capturing our vision with high-quality visuals and seamless editing. Their professionalism and creativity made the entire process smooth and the final video outstanding!</div>
+            <div class="review-reply">We are honored by your appreciation. Please stay in touch with us for future collaborations.</div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-meta"><span class="stars">★★★★★</span> <em>May 27, 2025 by Sneha Rawat</em></div>
+            <div class="review-body">Studio17filmz delivered exceptional video editing and videography for our ad campaign, perfectly capturing our vision with high-quality visuals and seamless editing. Their professionalism and creativity made the entire process smooth and the final video outstanding!</div>
+            <div class="review-reply">Thank you, Sneha. Your words mean a lot to us. We hope to have more collaborations in the future.</div>
+          </div>
+
+          <div class="review-item">
+            <div class="review-meta"><span class="stars">★★★★★</span> <em>Mar 15, 2025 by Prem Gupta</em></div>
+            <div class="review-title">Creativity &amp; Impact</div>
+            <div class="review-body">The Studio 17 Filmz team is a game-changer! Their creativity knows no bounds, and their commitment to timelines is unmatched! The result? Truly impactful work that leaves a lasting impression!</div>
+          </div>
+        </div>
+      </div> -->
+        <section class="testimonial-section">
+    <!-- <h2 class="section-title">Our Customer Reviews</h2> -->
+    
+    <div class="slider-container">
+        <div class="slider-wrapper" id="slider">
+            <script>
+                const reviews = [
+                    {name: "GURGUR X ENERGY", text: "ALFOREL: Establishing my business with this firm was a seamless experience."},
+                    {name: "Hyperphone", text: "The VAT and corporate tax services provided by this firm are exceptional."},
+                    {name: "Anny Leo", text: "Excellent service, great team, pro active and very supportive."},
+                    {name: "Aashish Kumar", text: "Professional web development and modern designs. Highly recommended."},
+                    {name: "Client UAE", text: "Best accounting firm service I have ever used. Very efficient."},
+                    {name: "Global Tech", text: "Innovative solutions and very responsive dashboard design."},
+                    {name: "Royal Resorts", text: "The booking system works perfectly for our cottages."},
+                    {name: "Creative Studio", text: "Stylish and mobile responsive UI components are amazing."},
+                    {name: "Data Analyst", text: "The ERP integration made our work so much easier and faster."},
+                    {name: "Wedding Planner", text: "Beautifully designed price calculator and hero sections."}
+                ];
+
+                reviews.forEach(r => {
+                    document.write(`
+                        <div class="testimonial-card">
+                            <div class="card-header">
+                                <img src="https://i.pravatar.cc/150?u=${r.name}" class="profile-img">
+                                <div class="user-info">
+                                    <h3>${r.name}</h3>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-quote-right quote-icon"></i>
+                            </div>
+                            <p class="review-text">${r.text}</p>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="dots-container" id="dots"></div>
+</section>
+      <div class="section-banner"><h2 class="section-title">Success <span class="accent">Stories</span></h2>
+        <div class="success-intro">“What it’s really like to work with us; straight from our clients ”</div></div>
+      <!-- <div class="success-wrap">
+        <div class="success-grid">
+          <div class="split-card text"><div><h3>Sundar Pichai</h3><p>Google CEO</p></div></div>
+          <div class="split-card"><img src="data:image/webp;base64,UklGRgYcAABXRUJQVlA4IPobAABwnwCdASpcAQABPp1InUulpCKnpZP7cPATiWNuMTA9Z9XGPcd/S88/rR3emS8F/ifLu+a73PpR3E/PEeu3HWfWN/hGQDzgbdZOY+o2Yo8r/w+WN9P+7PsnmLfTYTiwRV04QMii6h1/7uEtalBw7jgSL+HGKlPXDDCZfWUYr1DZkcC05IYI6lBm4JM30JCk5mN6O3MuzeOlt1U++Hj+YLx2/w4KUvqW7bAroC5QRRxbUUN4swqKSuL+rL4Zkblk18PTK5eJJBce9DxCVnInjXCgO7dH33yMHuTXMBDyV2T62EXmxrYNA4G/TmqrxuZOzz7fditIVHsPj09nrxGZIGBC/NXKxYRL3QMV27m487xQRkhUlqmxOLvGS622tTkKEN5BP8FhG8KChrcRJ40Ug8wxsgWVtrKEt7lvMAEzIDSUamJY64FFIZQPodREVV1b1kbwGEmtYYN5pOvI/ct8Wo0UkBd8HMFQF13BHSZ+4u5V8AD0jmExxtQZc1ZxWGBDWxP+bO1iA4bJGbCGqZO6VtwvrSdenMsup0AXVeMxFD7AQhHEVMmVj2Y5xkkFhat94wgiY/62gdSA/dfAKrj8vY4O8zwr8UrPTHhfizoVGV9QS9SVy9il3R2mBnZZVldyxyD7g68ejPI3SiC/w2v1bNCn8YTF8VmeapJb5y3YrVnDYj9XA/k4vVaXpijs2Gy79Xxv8MxEldwPu7UiIA9MsVklD2gOtJ7sxuH0f8ZFb20kRPfi8dJHMVe6vuLg3GgIJHBJIhpVn3L6qRpKJMLSDrLDtTBp9TKd9PmG/bty1GpptqbHd4UEgFXKAZ5oFlGB4sB4bhAV+pcuXXlKPZ0USzVUh6tm29txMS+XkAGKZTCzJUpIRn7HXFejEEKZqqLNO40A/t/q4Pqm3pNcuGXg1bDLcIhdDb4+6SKx4kGUTH8l0OzL9GD8GzIjGcswsChQr4OgJ/ch8W1zVcWLv06KTqRdClzw42PhKChmkl2MjwuQ4qiloHJLbc7ypJwQeuJh2aNUEaeX3xMTkd/hn14pkv9QDScnxXGTJb5TM1rFDdlsMuXM5WCe2w/BiZE5NghWkx+KPkc1NOvNGf9mLIzAF4v86luFGLKRpUbtEuXycN5KwVN4hIArzLYqdXHVdvfQ3Te/Eb+RE3g0KsnwZLEHI9tjJzjTEyPdFp3FhEzwsjcc6M9brhtrEKTsyvaW8c0crP+PXPcwILucaQAvR8Sl26qKLo+ue4X5FLzoCFwYYX+BpZn7+NgLRBM1pUU88lRrnBxcC+zJNSN7EjPKXkv4iEk/HUsDo5Ptz4yKuPmqcURQd6+zCsnhpKnQXGRs0JbF16IVOEZkpRokm7tfHJBMBHxnjSZ3EpBqdT5srFA27PJMImm/5L5lsgE5jfwHSqrpGkL8BT910MTsV2mSLu0foNwKU81QqmfMQPPRp4Ra0zvZQqCcgtN8ypb+PJcmg4rAuZW5aXfmfLZ2kEwf3ZdLdJb74wjg3R4fyLf+XvmmYbfdtOHJSefouxaZ7mYjmBUBL8d4t8gE027g2c7bOcT+duxh6U1TplxXnmuxsyg60VC+iH2BQgE/uOvHKIt2MYv2+Dpz36s3CWcW1cEr1vddF2EetQip1rsMUr5gimRZdQdJTd2xaXAAfPj48KMvzJcG3nYzi5ZOq3HvOAz7YEl6AhYcpB7xLtf4oDU/IAWYfqru+NJz1TgA/vpPo5vg/FKq54S6DZK//IcfM9/b+i1bz63O1weY/3Yad5kRIozYKnwsluYN+eKV0/P6JQ5goCSWo3W8dJD6es7F2NukN3J8Ma0azQhKqnCZ68wx9xlimGQGeLwvFnZrXS5bMXOkicq5KSGo61Hs9t/9eGQ346c0QT+CYJILedVKfRBEQZ9Xot9FJUhRpy1jMiV9fAbE4dPpj25TeUNtZ9/gFbcK1DvHarn311WQNJzyJOqTDLHa5xpyLbQKANnaE87ko05rC1egCrffocLuP5fu1E3r8mqcawm+4dQUe37XCCbOxukIkLyonJmY8E3qkThXP54vBaYv4WyIEaXLTWj+nvVDij0Di/KBSyKlWMYe/oOQwER4X/ZZ3HD6YgLCjezULonCKWdegW5F/j8zPn5I+SN2qRbLc6WO7cV5cOO/3Ja1DhnWUkI9YyaleY7r0igTxlo0EXq6WePUHKMSe5a01sO2Ne4rU/fTdrJxRcEtd7XBMJ+MXFT3qeIIY0j4i9IB8JrtmPUkvmjHGh6xDCero+91Y7qEniSh2g10erF8c3IFRWbtw9jwiRAZ++lJUit2cIax2gT0mdALdHTArlcolGYm4/PaW2PaXbRJlATsLmPJ4hIeG2jfoydrJS0m/kqDZxDTBLUCCuvADzujrz2KsfRoFE0ucnQBvsFgK5uX7pwIB61vEggrBZQD+5BYkwEweees+16T+3tw3ydVhPPa57/4PA5xilhGJHp362HewGK/GNxaxNaHZ+ahhSohUawD8DCUjLg4NWQN3HdIcCZbBKGzl1rj2u+J5fQ0fb7s6igG8kwFmnxzo7k+IUCsxCS4M6/d9iUqS0dvazK0R9VUvz6lrfbm49b2OVnwIFLbYMVHTVhi5KJj+Y6sK7YRAU9Ziq3693kwHaCFQgH0O06e4BEpO/VP0fqGwPTd/UPaDVD2Tgz9htLu4q0CzdH0hZ1qchVQMXz2GjH27eW0vSK8PytgNxDV0HV7dbK0xYTi7DXe0/PGhailPIIuhf8tj26sDL+jck7YhWVK5WhMMk8XczlMMiamLX13nTKcsUkNLs/iSbtiXX0UCCezRwysHH4354OJIoHZrG9Hq/oEJhvHBIo87jdZzGEmHl9Wa/s9iHurBbTsJZMng7yvn3tmNikd5X96Gqhuq18+fAxCcTTDpsUKOcBWFAjaXRc+1sdk/G5e8RsgV3ORd9Xcvc+/9fHdJ3fkLvOmvmPvWaJ9SOoEe3jjSJ3e8lPF5bOjr4S8YIOOA3Mvp3jrvdZQXVCOkpLOL+kSl6wV6AaQnf7gb0SlHqpPvKDK1gE3jSacJFcwsrfDJMfkTMTAoQMyUdsgZsHCJf0m0lxDKS27XVyJbZnuKDnoa4l8P9hxgCq+jABrUHlSFcyOaFB1K5CzUURR2Q8SGa7ZH7OeymAPGOztujanimdk6WSppY6S/BeGd6NlTuPFO76DtiuNWJ9fKjGxdLGi7oMahmPW1v37rCvk94MOGeWSSdzxYbcGKyprA+mMcHAy3rme7ZC6ZPv89N+AfexMh6f/Zfpb/U2Sg6w1Jr269oYoNukr9ssIp6+0NLrZypiZxnaXy1l0BSxTGq/uO1nE8MuqBnivAOAM3TjeqjxUMM5IJa3UlKBfTIaPkF/ZVrsXQhJWKDcpqT5nSdaMNPJtajy44JljRqkMtO4HIaCEzQ37y8rEqe4PJKT5798hkEjlIhnyz4DcPVgiT0w59wAsXcOJDj5OdFHev/Br9lbnjkoW/hBb2HaHSt38n4D5uPCoWC07bpsBw+nPjazL2SClpIhSMjhXBQw4I1YezdM9jg+kqo7Tb+hWFN4XjMeeEFFz9y5bBtWWrDAxnx1P2Y/Zb8I9ybNqOXXLEAktCCsfrv7UdIuhbocMMZqBxOPlTLIORnu0Hd8i441bxWGTi0IZoDw4TIZYwdsoqBm/+dDsGg38lzjTsY4aErsruYATisYFwRFSBeza/lly029H8bxvvrBA0EGLnKgQI1eR3bERdLn52iQL5KH0YAlx55AGOSdaKseC0XRSOaD/4UUV0kXbAXMUlg1g9oYFaO3rVgvyPFUAo6yZBTUD2EoQQG8us5oex33rmRTq5PhpL03A6kgi3YQBUhlIQzQEzHNZlZl9KQPUzhLHL6dKyhYStIKtLt8ANc2YR6wkNF0J3hPYfn12r0I7GTTrHQnHRlL44rrjb36hHV0H/pSFGbaq40Kir1lP6LwBCvTHzdLZlk9Xs57ltS1cRzbhVwxL9K5qB05EQtUUasc/eIwAGCmtci97f/8gdCqQn+42FR0wKMpyxvQIuCQ51YPh392igROjNS/Yt6V2Vq71ILQIB67kl66yl5hFGfIt21tlTOTAWfZBL11K6g11htQ3UCQ6HPgw2t0oeqAEE/NFtu2P9tQS7w1spo8ll6zYv5byvs38jarpt2kEveObIxEj0MuUt8Ucxtyv+qbhnmTccxtsorrFJ3Rl0oHRXZjwPIdYGKDwXEgjt8XKXN41tEeW6o209lxHRyAcgOZXJ/YHmXxwfxlciUT4dwGyENy2s3suyt+qGiPT+D9tZv9vIx8rbzjVrgGjYNEC2s5aLnFcGFEzAiFx4DZhFI1uoEG2Dw/P2zJO+M2s01Q43hADKp7GQuyIimbrcBFOKmTjbVxEZw4g52b+FRAJ45c6O3F4bSUUEp9LzTXLGXmnrqVafNM91g5ZlbMdlaizw5KXABSm9mvbO51mX2rav2sdFS7s1WJFRdqDSmGckYaC1KC0i7uu8XLgGs1JZ8CAUYj+nc7S1kritn199OTC5RJuSDcL2YipTJNon57LEHtP8lqOQu1qHmyOxbcXG/xDHprTEJWh0ISNOcBKcJBdtATx6pMImYYZJ7/GuV2h29JPUxDFr5EdQIg0anNmT8h6Kx8KAl3UX8nhw9zag/SPoNdtZssGUmyktnt1sUFZ4q9molSZaqT9RVttFYFMNw9QSHQdCithxW10wT4ao9VTyCo9/bQnCwXtHbROPukVCbEeTKh/TCwVEsERYav7qPwObfWRXutETTzJVSvjX5YlxQTLBkvfwsSosGmXK4tzuRE/lX5zN1sNmbszWogtPEBsClIMFNJpOKAFM3qpped8qLiDtUtc/cDDB0M4BFflGvOMovFT1GKhi7bXWH40DjwxrVj/ioMF0L6zJOEA6FrdEBLFPyul0D269Fn946+YFjX23pv/32Q8hbREhIvYHrC8IpPLx19PzK/8D6HcL/vvbaD0ElwqFNSYRzeZlC0doez78lIlRCwXlv2jdUA8M852SRY5D9lKaDuR5B4Zpd1Vf36N73KPwyUmnOX7AvB2jNi0EfT/mNcaCeCGa/Zip5lAta4NMCZe+3xcH1fSH05AZXFIZge0EZJ2njZyQGhxz9PNb91EN6LerNhllMUNFeNyJzlLEbvikKFgAlBammnZXIrB+HhA15dkrU6NQAA9STDSI9dBVIzkJZFPFXZnRKDqAQ1+w/q4qACjvI8kfP8xkieqW14dSoaeU3zXOJ8Lli6ZbZk/LpQ0ApxxZezgR8+wASeMkxNiFquqRO8EA/dkbFuul4FrsAXvaius7W6h93IZ3pdO/RF+osnP6KY7/7Lk87yq6gSQ6Au3WdWQ3pj2AiYONm7as4Nh6+g1KEaiOKdB6Psgsdr/uu1kyuBKL2RH96i0INOLBnpxyU43AewqDXaSq2WOuaWtx9T8/lrZYW4Jb4fmFt6WkQlBflkSTeqls8XBark3Nez5LZQAjaNcepSVdTDZNTXOt2IgPN0XkdA9iCVaqvmrfiNCMw4PAtO3sC83gG46ExYHOo0NI+r6wkH+LJlO0K6qtIPWz/wde2OCAeMpldZFKbol9yBkJwO83UAYT+6K8y/VTVUIVr/Om/KGCkodQiVeu085zrTr1DVIYZxjpddYzgu4X89xH4zGEBBhG/I2JTUZhQUjumsfuy/CTb8KwolI29U9IS7B6aw6F6ygdrsVFXcECJSq6tJ6gKMCzJWsYolGFpBhOoAG4PVloWv1uKWF3FR/BYx2mzoyZeggZ49X3dx9Y8fHnaInOvNrYf2VEjKYLOppVTdQA3Fv0tVoM1yW/V8NMJiTPwOSH4MPIHsO9/CFXtgHAVI8RCEoJPvACCnYVrvvwAFq8i7vy/E4RyhaUWGH8qp8kQqVWp3zhdQHNRg14rXvyTNCpvRKqrN9gEklm0Ean4qmr1O+cwgvcbHWydYN8TQIqK63qJpGFU4/TLXyO7OZnxGzSUJLlOHdWe6FBHwOSn4OSgkhgsiT/Y+azZ1k1qjDzPIsf2xMCsJHNiM4upTInwDGW7V0RQgXJfHN3RJ20aW3nygGtfHHl+CK/DfiAgkC6r5O+TkOkRz62a2WxZ6+vIWBxugcmfFN+pAU4o2ve/+Zys+oF6L2LLe6mffBqdtGymzt2FTk2IyyPQbLVJjda/oLk0f21F1vyRSHaKIBNW/3eC2c9qGkuIofrlPDCZ+x6iU8iFqoS8LArho+06r/h2KrJpBz9DVZ6wWpzOAIgd2v/HOCNnLSM0hT5CQrcvnGmA8t1egm0NEsuaYT1QK2+VkmYA13RnNzV3z2aOl2E2xRcRnpOH80yXdK9/lOkDDpY6ur1pFoDSRAYRPvmiJFUbgG4cZeowfeb1zxmPTopEPKxwmISNjh9WycHk3IjMr4md5xfrHVgqeusDQ1rBr8FDsoBh6tDKgvFJ4F7ix2Y3d66vx1DxIOHV/VytLUiv5JWJs/wL1IB6OlctQcGVcTmMiSXf1+TLb7A8mDS5tjGZfXhuSD5ADyMnynHpjbtSMNq3mzB3yu6kt3eDtfDtOm/dHe1qyodSj6BQmmZNa0XB9cqs9KCoTOGHYNLMcBnGLd4JRwr5uJtpxFEB9qaayZ8pxX52kVGo92S774v01aW3ZyEfh91LvruUKKKF76CTBFornaqnx6WmZCmNaPHCUxr0NCgQIAtjI5FjMYMzdYMirnZjD3q21iROZ23euhUvhQWJBpn1W5RbdD+2HAPJGK8kbzauBLLM2Bg7EiaYvZPyZ4FSk3rjljM37oR0tQnld96+I1DD3P5vdW6KHP0r7eR7BK/0ysSAy7ZzvkWeyYsGrujwJ9LW2p7GLzgMaqosyzHVS40/YSoxRhpkr6jlrp86IY+B+45CVQKSBXJ91R/btL0MvQdDHaEesD8j9FPJZaJtE3SwxdxkyPkDNlfFxzZY1MlmGDqABOmMJHP7YcSLM2a+J0bkKRVQE5MSxnHqGd5vvVah/pX0iG63m+eh1n0lmW7Q23na2/JNkDYsuYfHM2sEGOAkXy0LQk2HfaKDPmK++Ue0kCHdFgzD3P8aHFI5X6k7gIkGouN8TstoeXMT0fVulU9xkDGyDTHYS7Dctd/FuGTgrWOtWdGEWtLQK8hXs5LoMl6QdckYm4yYnem0FyJWwItSfOAZwOic9Tq2PLHhV03v1r45MqBGWakRyO03F1Dj6ysWvm5F1uaEBfXuZYo7jRC+A2g1ZNKaaDJQGKgRncskTZzlNWw24M5oMMIei0JphqqZEWub8DgsUNyFM/vrcr1YIPC6RluG3xKD4vPkTDKh4KrTnU40i35tAytK3CgOrYEKp1PaH7h6N76fLRB19u3LgAAgDperQVg+/dhSwb+dMSV9qCRF4tOxXV5pdF6hORDKpgtJG2F83TZ41/0SbFYXnZpuUiVeDNVfcilrgkoVT5fLq5R5j/MEB16deaRfvuS9RwJkLAIOwr+mBDe8WXQtsEwLLsUXVOP4jSZ26xomPUEVJaCZBgmRcPpvFxA8+Dmy7q+Ap/Hk7XrS7Ryohdnc2GxfqtAp6lCZ+DDUeX6mIKaP6Dp8+JJDqG/6uQGMdIiQMhzAPbJWc3iNis01xFszFBquOSJVfn8ZOZAbROET7ge0yC+v1SNb+KcBTFLYFnDpw8fuRMwy6CtbVPGARAfajHWIhCkyiH7OS0/loTP7cLMbA9seMYRlWMxFRZx51P7jjWagQg/8CwBq35RDJ/h9W4daRih730qj7OSFxGWTnrRUBDgIn9b/BCamOUmFOtExm1mPF405hi34/9BFlHRuKRnI5FGuK+Y/f9CYycbWd6o2cMKcQz1kDk68i9AgIPMai6dU/p3mYaBwDhH6bPem/Vj4LTsJYJU2oTUNt8F7U7MbO55f86823S9uzXmqkyZlnfpm9d3bPzeiG4v9YjyGNGHIMDd5heedoOTi0xlp5Beshmsw8sF4LJ/58JFlgryUHfA6CTpH3crs2yL7Dr+DD5hOtP4dQFoSFeCS/lzaQPMO1a8YSfsdqCCOoxkR0lCIQ9AOqixLKMQylkqX7z4ALO02lvU06zaPmfzyd/1TX1ywQjZ/fmQG2Hp1rMImQ6Uva68Oru2iAUkJQV6Ko+fvpWa5ioT/t0Wrb9FxwueHaS7Lzazu71cX3RTI0wjsYsGWocedqqSsL2uzp9j4ksG4d/uBuUbDsZo8J4gWNs9OG7n8ZJh3m255D6zXlxxJaGd80bVpGiLIP7+LhK4EwEWR9LFIfDZlvJlplb/qwNF2bX1uhagcf5BgpStJ3qZmdMncrOkpY7iP2fitTaAos7Ua0HUiCId+FKdZSLDgJb0sy+7Qpphu0nRCVkBaI75+j+z7MXjf3tx0fWeAlVCBUXl58Ebcp2cvja6lVo+v4n5gsjFi6L6b4FrqhgvbRTdwx0Lp4YWihf1iaFW1DTPbBdvUB7tUciFk0s3IQG3/Uhywoa2nY8JGNQwbIWnSYtZLCarDMgjO4lLGZDKCLyBeT+cRXQumvJ2hfPeUBrWJjxmmI9YzKurXFWU18IOndI5+NfjBWmPwHBbxmfuB3zeJ6XMg9IgXQthSziYVfnNYviahpzh8822V8mo9U0FpOLh7YDETgf81vU6bLZW1hBALtCFBwOV7yQ1LWROTDcOqoyYovOunYzfCkIO/nR48qxMiJQlonCGENBl3nrnvOd4VET3MjTZ5Z20UiTgk0P4LN5SmXbHcMFVqglZk9p1jD59oItSZa6QnKMObyHAbPmWEDQBFd0T1CzSeNzQ3IK6tBhxXYXSQhchYiGSqDk7LPeigN44Z8vc+K8kk+qpondd4lQVvwMP/uBbNY15HkZ1IKADIbVgfiUGjOqkjd1tqPn0B1PouRl1F5i68FChrNOefrrDOXnyNjJ5Tz+ZG8EhEIydPZOFjZDp+W21UvSzWKEOxz/G5s7MsAtyYC4qD2DmYmIk4lHW+nYV92bfSFvu48c/EljMrfeixmlAbzYo+1OcMekBd+cUu+McK6GWImWrFu/pGljSOtWD6HFoMQZ1aP6VkG8jnyTpR9+jT/ok2dWBDJ2663kBKEg4YHaZk7sGhyflwtLh1dXfcYFO4wUu0dQHIQI7+ov5x1j5zp1C/59Tl6L1oRopGqd84VD9GIib4wKo9ZzkNXhJpKZIQQ5NbwK87k58SjyNwfj/sThBqFQ2fNCDnFmoroBKIs8Ja+8tYvmKkLzmeiV6GmlqpZGnSbGDEkC99Tej8vP5vwEkbymWxsGxmHRytW4ozqBHjEUTsUKti17D/AGBTOKErEiBKAbVSq92slLm+GGVPeKkJenjVsEcjDiSlmokHzWQ5dFSt89VcuDHIlZBELumQkSYiH1ZVv0wK35nHbLF/vFrIWukjpwC8UMOWtM5YZNWIOTJFLAPFFDd7NxglQ6V9mv1hD4RaUhdD4T7v3CbJUgzpdEWY0BDDdayHmQajeVRyIu3jO8YqDJHEWsdB0dhM+lmzK3uZ0AY79uFF5Vm2j/dd52sNNiA4AtMOFXggxJK4N9vhhurdeQccjXic7mfN/tzEir1KiUj9CG6bs0YwRq3MPgAAAA" alt="Sundar Pichai"></div>
+          <div class="split-card"><img src="https://th.bing.com/th/id/OIP.rLwovVLLE1rwxNeE8uliYwHaE8?w=284&h=189&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Satya Nadella"></div>
+          <div class="split-card text"><div><h3>Satya Nadella</h3><p>Microsoft CEO in 2014</p></div></div>
+          <div class="split-card text"><div><h3>Elon Musk</h3><p>Tesla</p></div></div>
+          <div class="split-card"><img src="data:image/webp;base64,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" alt="Elon Musk"></div>
+          <div class="split-card"><img src="https://th.bing.com/th/id/OIP.CGZp6RGH7ODz_IbVrbWuRAHaE7?w=280&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Jeff Bezos"></div>
+          <div class="split-card text"><div><h3>Jeff Bezos</h3><p>Amazon CEO</p></div></div>
+        </div>
+      </div> -->
+    </section>
+
+
+ <div class="reel-grid">
+        
+        <div class="reel-box text-box">
+            <h3>Sundar Pichai</h3>
+            <p>Google CEO</p>
+        </div>
+        <div class="reel-box image-box">
+            <img src="images\success-story\Sundar.png" alt="Sundar Pichai">
+        </div>
+
+        <div class="reel-box image-box">
+            <img src="images\success-story\Jeff.png" alt="Satya Nadella">
+        </div>
+        <div class="reel-box text-box">
+            <h3>Satya Nadella</h3>
+            <p>Microsoft CEO in 2014 </p>
+        </div>
+
+         <div class="reel-box text-box">
+            <h3 >Elon Musk</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tesla</p>
+        </div>
+        <div class="reel-box image-box">
+            <img src="images\success-story\Elon.png" alt="Elon Musk">
+        </div>
+
+        <div class="reel-box image-box">
+            <img src="images\success-story\Jeff.png" alt="Jeff Bezos">
+        </div>
+        <div class="reel-box text-box">
+            <h3>Jeff Bezos</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amazon CEO</p>
+        </div>
+
+         
+
+    </div>
+
+
+
+  <footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TwoDots Films</h4>
+      <p class="brand-desc">
+        With 25+ years of experience across advertising, media and broadcast.
+        We offer end-to-end solution, from creative storytelling & video production to digital strategy
+        and performance marketing; driving meaningful growth for brands across digital and broadcast platforms.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">The Team</a></li>
+        <li> <a href="Blog.html">Portfolio</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="reco.html">Recognition</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Link</h4>
+      <ul class="footer-links">
+        <li><a href="reco.html#contact-section">Contact US</a></li>
+        <div class="contact-info">
+        <p><strong>Email:</strong></p>
+        <p><a href="mailto:contact@2dotsfilms.com"  class="contact-info">contact@2dotsfilms.com</a></p>
+         
+      </div>
+            <div class="contact-info">
+        <p><strong>Phone:</strong></p>
+        <p><a href="tel:+919953655158" class="contact-info">+91 9953655158</a></p>
+        <p><a href="tel:+919873088079"  class="contact-info">+91 9873088079</a></p>
+        <p><a href="tel:+919911262034"  class="contact-info">+91 9911262034</a></p>
+      </div>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Information</h4>
+      <p>1556, Gaur City Mall, Greater Noida West, Gaur City 1, Sector 4, Greater Noida, UP-201318, India</p>
+      
+  
+      
+
+      <div class="socials">
+        <a href="https://www.youtube.com/@studio17filmz-Twodotsfilms" class="social-icon">▶</a>
+        <a href="https://www.facebook.com/2DotsFilms" class="social-icon">f</a>
+        <a href="https://www.linkedin.com/company/twodots-films/posts/?feedView=all" class="social-icon">in</a>
+        <a href="" class="social-icon">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+    const slider = document.getElementById('slider');
+    const dotsContainer = document.getElementById('dots');
+    const cards = document.querySelectorAll('.testimonial-card');
+    let index = 0;
+    let autoSlide;
+
+    // 1. Dots generate karna (Cards ke total count ke hisaab se)
+    cards.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    // 2. Slider Move Function
+    function updateSlider() {
+        const cardWidth = cards[0].offsetWidth;
+        // Mobile par gap 0 hai, desktop par 20px
+        const gap = window.innerWidth <= 600 ? 0 : 20;
+        
+        const moveDistance = index * (cardWidth + gap);
+        slider.style.transform = `translateX(${-moveDistance}px)`;
+        
+        // Dots update
+        dots.forEach(d => d.classList.remove('active'));
+        if(dots[index]) dots[index].classList.add('active');
+    }
+
+    // 3. Auto-Next logic
+    function moveNext() {
+        let visibleCards = 1;
+        if (window.innerWidth > 900) visibleCards = 3;
+        else if (window.innerWidth > 600) visibleCards = 2;
+
+        let maxIndex = cards.length - visibleCards;
+        
+        index++;
+        if (index > maxIndex) {
+            index = 0; // Wapas pehle card par
+        }
+        updateSlider();
+    }
+
+    function goToSlide(i) {
+        index = i;
+        updateSlider();
+        startAutoSlide(); // Manual click ke baad timer reset
+    }
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        autoSlide = setInterval(moveNext, 2000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    // Resize hone par calculation theek rakhta hai
+    window.addEventListener('resize', () => {
+        index = 0; 
+        updateSlider();
+    });
+
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    // Initial Start
+    updateSlider();
+    startAutoSlide();
+</script>
+
+
+</body>
+</html>
