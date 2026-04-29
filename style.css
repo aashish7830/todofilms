@@ -457,6 +457,7 @@
                 color 0.3s ease;
     
     cursor: pointer;
+    will-change: transform;
 }
 
     /* Hover Effect */
@@ -466,10 +467,15 @@
 } */
 .service-btn1:hover h2 {
     color: #0cc7cd; 
-    transform: translateY(-8px) scale(1.02); /* Thoda stylish lift aur growth */
+    /* Translate hata diya hai, sirf scale rakha hai zoom ke liye */
+    transform: scale(1.1); 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth movement ke liye */
 }
+
+/* --- Active Effect: Slight Shrink (Press feel) --- */
 .service-btn1:active h2 {
-    transform: translateY(-2px) scale(0.98);
+    transform: scale(0.95); /* Click karne par thoda andar dabega */
+    transition: transform 0.1s;
 }
     /* Mobile Devices ke liye Media Query (up to 767px) */
 @media only screen and (max-width: 767px) {
