@@ -296,6 +296,47 @@
     padding: 10px 30px;
     margin: 0 auto;
 }
+
+
+/* Arrows Styling */
+  /* 4. Navigation Controls (Arrows) */
+        .move-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 55px; /* Large arrow size */
+            color: #157e9e; /* Teal color from image_00145a */
+            cursor: pointer;
+            z-index: 100;
+            line-height: 1;
+            transition: 0.3s;
+            padding: 10px;
+        }
+
+        .move-btn:hover {
+            color: #0d5a73;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .back-btn { left: -10px; }
+        .forward-btn { right: -10px; }
+
+/* Mobile par arrows thode chhote */
+@media (max-width: 600px) {
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+  @media (max-width: 650px) {
+            
+            .move-btn { font-size: 40px; }
+            .back-btn { left: 0; }
+            .forward-btn { right: 0; }
+        }
   </style>
   
 </head>
@@ -319,7 +360,7 @@
         <a href="services.html">Services</a>
         <a href="team.html">Team</a>
         <a href="reco.html">Recognition</a>
-        <a href="Blog.html">Portfolio</a>
+        <a href="Portfolio.html">Portfolio</a>
         <a href="review.html">Reviews</a>
         
         <a href="Blog.html">Blog</a>
@@ -340,6 +381,8 @@
     <!-- <h2 class="section-title">Our Customer Reviews</h2> -->
     
     <div class="slider-container">
+       <button class="move-btn back-btn" onclick="slideAction(-1)">&#10094;</button>
+            <button class="move-btn forward-btn" onclick="slideAction(1)">&#10095;</button>
         <div class="slider-wrapper" id="slider">
             <script>
                 const reviews = [
@@ -443,10 +486,13 @@
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">The Team</a></li>
-        <li> <a href="Blog.html">Portfolio</a></li>
-        <li><a href="review.html">Reviews</a></li>
+        <li><a href="team.html">Team</a></li>
         <li><a href="reco.html">Recognition</a></li>
+        <li> <a href="Portfolio.html">Portfolio</a></li>
+
+        <li><a href="review.html">Reviews</a></li>
+        
+         <li><a href="blog.html">Blog</a></li>
       </ul>
     </div>
 
@@ -493,83 +539,87 @@
 
 <script src="script.js"></script>
 
-
 <script>
-    const slider = document.getElementById('slider');
-    const dotsContainer = document.getElementById('dots');
-    const cards = document.querySelectorAll('.testimonial-card');
-    let index = 0;
-    let autoSlide;
+const slider = document.getElementById('slider');
+const dotsContainer = document.getElementById('dots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const cards = document.querySelectorAll('.testimonial-card');
 
-    // 1. Dots generate karna (Cards ke total count ke hisaab se)
-    cards.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    });
+let index = 0;
+let autoSlide;
 
-    const dots = document.querySelectorAll('.dot');
-
-    // 2. Slider Move Function
-    function updateSlider() {
-        const cardWidth = cards[0].offsetWidth;
-        // Mobile par gap 0 hai, desktop par 20px
-        const gap = window.innerWidth <= 600 ? 0 : 20;
-        
-        const moveDistance = index * (cardWidth + gap);
-        slider.style.transform = `translateX(${-moveDistance}px)`;
-        
-        // Dots update
-        dots.forEach(d => d.classList.remove('active'));
-        if(dots[index]) dots[index].classList.add('active');
-    }
-
-    // 3. Auto-Next logic
-    function moveNext() {
-        let visibleCards = 1;
-        if (window.innerWidth > 900) visibleCards = 3;
-        else if (window.innerWidth > 600) visibleCards = 2;
-
-        let maxIndex = cards.length - visibleCards;
-        
-        index++;
-        if (index > maxIndex) {
-            index = 0; // Wapas pehle card par
-        }
-        updateSlider();
-    }
-
-    function goToSlide(i) {
+// 1. Dots setup
+cards.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
         index = i;
         updateSlider();
-        startAutoSlide(); // Manual click ke baad timer reset
-    }
-
-    function startAutoSlide() {
-        stopAutoSlide();
-        autoSlide = setInterval(moveNext, 2000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlide);
-    }
-
-    // Resize hone par calculation theek rakhta hai
-    window.addEventListener('resize', () => {
-        index = 0; 
-        updateSlider();
+        resetTimer();
     });
+    dotsContainer.appendChild(dot);
+});
 
-    slider.addEventListener('mouseenter', stopAutoSlide);
-    slider.addEventListener('mouseleave', startAutoSlide);
+const dots = document.querySelectorAll('.dot');
 
-    // Initial Start
+// 2. Slider Logic
+function updateSlider() {
+    let visibleCards = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+    const maxIndex = cards.length - visibleCards;
+
+    // Boundary check
+    if (index > maxIndex) index = 0;
+    if (index < 0) index = maxIndex;
+
+    const cardWidth = cards[0].offsetWidth;
+    const gap = window.innerWidth <= 600 ? 0 : 20;
+    const moveDistance = index * (cardWidth + gap);
+
+    slider.style.transform = `translateX(${-moveDistance}px)`;
+
+    // Dots update
+    dots.forEach(d => d.classList.remove('active'));
+    if(dots[index]) dots[index].classList.add('active');
+}
+
+// 3. Controls
+nextBtn.addEventListener('click', () => {
+    index++;
     updateSlider();
-    startAutoSlide();
-</script>
+    resetTimer();
+});
 
+prevBtn.addEventListener('click', () => {
+    index--;
+    updateSlider();
+    resetTimer();
+});
+
+// 4. Auto Slide Logic
+function startAutoSlide() {
+    autoSlide = setInterval(() => {
+        index++;
+        updateSlider();
+    }, 3000); // 3 seconds mein move hoga
+}
+
+function resetTimer() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+}
+
+// Mouse over hone par stop
+slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+slider.addEventListener('mouseleave', startAutoSlide);
+
+window.addEventListener('resize', updateSlider);
+
+// Initial start
+updateSlider();
+startAutoSlide();
+</script>
 
 </body>
 </html>

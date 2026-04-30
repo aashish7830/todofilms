@@ -126,7 +126,7 @@
        
         
         
-        @media (max-width: 768px) {
+        @media (max-width: 725px) {
               
           
     .services-container {
@@ -220,22 +220,55 @@
      
 }
 
-@media (min-width: 770px) and (max-width: 1100px){
+@media (min-width: 770px) and (max-width: 1230px){
      .card-img {
         height: 100%;
-        /* width: 100%; */
-        /* object-fit: cover; */
+        width: 100%;
+        object-fit: cover;
                 width: 100%;
                 /* flex: none; */
-           
-
+                border-radius:8%;
          
+    }
+    .main-section{
+        gap:2px;
+        width:100%;
+        /* padding:1px 70px 50px; */
+        margin:2rem 0 4px 0; 
     }
     .service-list li {
         width: 100%;
-        font-size: 8px;
+        font-size: 14px;
         padding: 1px 10px;  
     }
+
+}
+
+
+@media (min-width: 725px) and (max-width: 900px){
+      .card-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+                width: 100%;
+                /* flex: none; */
+                border-radius:8%;
+         
+    }
+    .main-section{
+        gap:2px;
+        width:100%;
+        /* padding:1px 70px 50px; */
+        margin:2rem 0 4px 0; 
+    }
+    .service-list li {
+        width: 100%;
+        font-size: 14px;
+        padding: 1px 10px;  
+    }
+    /* --- LOGICAL ORDERING --- */
+
+ 
 
 }
 
@@ -365,21 +398,21 @@
     
     /* Hum image-box ko 'order: 2' aur text-box ko 'order: 1' de sakte hain */
     .reel-grid .text-box {
-        order: 1; /* Saare text boxes pehle aayenge */
+        order: 2; /* Saare text boxes pehle aayenge */
     }
     
     .reel-grid .image-box {
-        order: 2; /* Saare image boxes baad mein aayenge */
+        order: 1; /* Saare image boxes baad mein aayenge */
     }
 
     /* Lekin upar wala logic sab mix kar dega. 
        Isliye hum sirf SECOND pair ko target karenge: */
     
-    .reel-grid div:nth-child(3) { 
-        order: 4; /* Niharika Image ko niche bhejo */
-    }
     .reel-grid div:nth-child(4) { 
-        order: 3; /* Niharika Text ko upar lao */
+        order: 3; /* Niharika Image ko niche bhejo */
+    }
+    .reel-grid div:nth-child(3) { 
+        order: 4; /* Niharika Text ko upar lao */
     }
     
     /* Final Result: 
@@ -449,7 +482,7 @@
         <a href="services.html">Services</a>
         <a href="team.html">Team</a>
         <a href="reco.html">Recognition</a>
-        <a href="Blog.html">Portfolio</a>
+        <a href="Portfolio.html">Portfolio</a>
         <a href="review.html">Reviews</a>
         
         <a href="Blog.html">Blog</a>
@@ -468,14 +501,14 @@
  <section class="all-section">
 
     <section class="main-section">
-        <div class="card">
+        <div class="card  .img-1">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1O4Z0uCkjjJUTvB7nYqZCo4" class="service-link">
-            <img src="images\Our Service\AI Innovation.png" alt="AI" class="card-img"> 
+            <img src="images\Our Service\AI Innovation.png" alt="AI" class="card-img  " > 
             </a>
         </div>
 
-        <div class="services-container">
-            <ul class="service-list left">
+        <div class="services-container  list-1">
+            <ul class="service-list left " >
                 <li>AI Video Production</li>
                 <li>AI-Powered Ad Creative</li>
                 <li>AI Product & Brand Visuals</li>
@@ -485,8 +518,8 @@
             </ul>
         </div>
 
-        <div class="services-container">
-            <ul class="service-list right">
+        <div class="services-container  list-2">
+            <ul class="service-list right  ">
                 <li>Performance Marketing</li>
                 <li>Social Media Management</li>
                 <li>Influencer Marketing</li>
@@ -496,21 +529,21 @@
             </ul>
         </div>
 
-        <div class="card">
+        <div class="card .img-2">
              <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="service-link">
-            <img src="images\Our Service\Digital Solution.png" alt="Digital" class="card-img">
+            <img src="images\Our Service\Digital Solution.png" alt="Digital" class="card-img ">
            </a>
         </div>
     </section>
 
-       <section class="main-section">
+       <section class="main-section  .img-3">
         <div class="card">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1MxK3_OKOesDW6AhreaRh_z" class="service-link">
-            <img src="images\Our Service\Brand Films.png" alt="Brand Films" class="card-img">
+            <img src="images\Our Service\Brand Films.png" alt="Brand Films" class="card-img" >
             </a>
         </div>
 
-        <div class="services-container">
+        <div class="services-container  list-3">
             <ul class="service-list left">
                 <li>Brand Story Films</li>
                 <li>Product Launch Films</li>
@@ -520,7 +553,7 @@
             </ul>
         </div>
 
-        <div class="services-container">
+        <div class="services-container list-4">
             <ul class="service-list right">
                 <li>Corporate Profile Films</li>
                 <li>Company Culture Films</li>
@@ -530,20 +563,20 @@
             </ul>
         </div>
 
-        <div class="card">
+        <div class="card .img-4">
              <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1O9EDqOq43VLd_zcXHH5tie" class="service-link">
-            <img src="images\Our Service\Corporate Narration.png" alt="Corporate" class="card-img">
+            <img src="images\Our Service\Corporate Narration.png" alt="Corporate" class="card-img" >
             </a>
         </div>
     </section>
      <section class="main-section">
         <div class="card">
              <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1Mg2nuMWBmVYh3mrV6ODnNk" class="service-link">
-            <img src="images\Our Service\Motion Design & Animation.png" alt="Motion Design & Animations" class="card-img">
+            <img src="images\Our Service\Motion Design & Animation.png" alt="Motion Design & Animations" class="card-img" .img-5>
             </a>
         </div>
 
-        <div class="services-container">
+        <div class="services-container  list-5">
             <ul class="service-list left">
                 <li>Brand Identity Animations</li>
                 <li>Logo Animations</li>
@@ -553,7 +586,7 @@
             </ul>
         </div>
 
-        <div class="services-container">
+        <div class="services-container list-6">
             <ul class="service-list right">
                 <li>Television Commercials</li>
                 <li>Digital Ad Films</li>
@@ -563,20 +596,20 @@
             </ul>
         </div>
 
-        <div class="card">
+        <div class="card  .img-6">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PxXNRiC4uQHw6iTEB4P61p" class="service-link">
-            <img src="images\Our Service\TVCs & Digital Commercials.png" alt="TVCs & Digital Commercials" class="card-img">
+            <img src="images\Our Service\TVCs & Digital Commercials.png" alt="TVCs & Digital Commercials" class="card-img" >
             </a>
         </div>
     </section>
      <section class="main-section">
-        <div class="card">
+        <div class="card .img-7">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PrgJPSBd19VmZs1bMGgiUB" class="service-link">
-            <img src="images\Our Service\OTT & Web Series.png" alt="OOT & Web Series" class="card-img">
+            <img src="images\Our Service\OTT & Web Series.png" alt="OOT & Web Series" class="card-img" >
             </a>
         </div>
 
-        <div class="services-container">
+        <div class="services-container  list-7">
             <ul class="service-list left">
                 <li>Original Web Series</li>
                 <li>Short Format Films</li>
@@ -586,7 +619,7 @@
             </ul>
         </div>
 
-        <div class="services-container">
+        <div class="services-container list-8">
             <ul class="service-list right">
                 <li>Social Awareness Campaign</li>
                 <li>Government & Policy PSAs</li>
@@ -596,20 +629,20 @@
             </ul>
         </div>
 
-        <div class="card">
+        <div class="card .img-8">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1NtOPHw-l5knjZqyzCfuDR5" class="service-link">
-            <img src="images\Our Service\Public Service Announcement.png" alt="Public Service Announcement" class="card-img">
+            <img src="images\Our Service\Public Service Announcement.png" alt="Public Service Announcement" class="card-img" >
              </a>
         </div>
     </section>
      <section class="main-section">
-        <div class="card">
+        <div class="card .img-9">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1MJvBMohJVgr30N-7fTHcoS" class="service-link">
-            <img src="images\Our Service\Documentries.png" alt="Documentaries" class="card-img">
+            <img src="images\Our Service\Documentries.png" alt="Documentaries" class="card-img" >
             </a>
         </div>
 
-        <div class="services-container">
+        <div class="services-container list-9">
             <ul class="service-list left">
                 <li>Brand  Documentaries</li>
                 <li>Corporate Documentaries</li>
@@ -619,7 +652,7 @@
             </ul>
         </div>
 
-        <div class="services-container">
+        <div class="services-container list-10">
             <ul class="service-list right">
                 <li>Educational Content</li>
                 <li>Thought Leadership Content</li>
@@ -629,9 +662,9 @@
             </ul>
         </div>
 
-        <div class="card">
+        <div class="card .img-10">
             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1Njj6VstoWl_zoVRswHLz3w" class="service-link">
-            <img src="images\Our Service\Factual Content.png" alt="Factual Content" class="card-img">
+            <img src="images\Our Service\Factual Content.png" alt="Factual Content" class="card-img" >
             </a>
         </div>
     </section>
@@ -691,10 +724,13 @@
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="team.html">The Team</a></li>
-        <li> <a href="Blog.html">Portfolio</a></li>
-        <li><a href="review.html">Reviews</a></li>
+        <li><a href="team.html">Team</a></li>
         <li><a href="reco.html">Recognition</a></li>
+        <li> <a href="Portfolio.html">Portfolio</a></li>
+
+        <li><a href="review.html">Reviews</a></li>
+        
+         <li><a href="blog.html">Blog</a></li>
       </ul>
     </div>
 

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Feedback Section</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 1. Review Section Container */
+        .feedback-hub {
+            background-color: #d9dede; /* Image_0014f8 grey background */
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .display-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            padding: 20px 10px;
+        }
+
+        /* 2. Sliding Track */
+        .cards-carousel {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* 3. Individual Client Cards */
+        .user-story-card {
+            background: #ffffff;
+            min-width: calc(33.33% - 20px); /* Desktop: 3 cards */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            flex-shrink: 0;
+             
+            box-sizing: border-box;
+            border-bottom: 4px solid transparent;
+            transition: 0.3s;
+        }
+
+        .user-story-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid #157e9e;
+        }
+
+        /* Card Header (Image + Name) */
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-circle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid #d4af37; /* Premium Gold Border */
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .photo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-profile h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .user-story-card p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* 4. Navigation Controls (Arrows) */
+        .move-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 55px; /* Large arrow size */
+            color: #157e9e; /* Teal color from image_00145a */
+            cursor: pointer;
+            z-index: 100;
+            line-height: 1;
+            transition: 0.3s;
+            padding: 10px;
+        }
+
+        .move-btn:hover {
+            color: #0d5a73;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .back-btn { left: -10px; }
+        .forward-btn { right: -10px; }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .user-story-card { min-width: calc(50% - 10px); } /* 2 cards */
+        }
+
+        @media (max-width: 650px) {
+            .user-story-card { min-width: 100%; } /* 1 card */
+            .move-btn { font-size: 40px; }
+            .back-btn { left: 0; }
+            .forward-btn { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="feedback-hub">
+        <div class="display-container">
+            <!-- Arrows -->
+            <button class="move-btn back-btn" onclick="slideAction(-1)">&#10094;</button>
+            <button class="move-btn forward-btn" onclick="slideAction(1)">&#10095;</button>
+
+            <!-- All 7 Cards -->
+            <div class="cards-carousel" id="cardTrack">
+                <!-- Card 1 -->
+                <div class="user-story-card client-ref-1">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Hyperphone</h3>
+                    </div>
+                    <p>The VAT and corporate tax services provided by this firm are exceptional. Highly professional team.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="user-story-card client-ref-2">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Anny Leo</h3>
+                    </div>
+                    <p>Excellent service, great team, pro-active and very supportive throughout our project timeline.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="user-story-card client-ref-3">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Aashish Kumar</h3>
+                    </div>
+                    <p>Professional web development and modern designs. They understood our creative vision perfectly.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="user-story-card client-ref-4">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Anil Sharma</h3>
+                    </div>
+                    <p>The technical expertise and the UI/UX implementation for our student system were top-notch.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="user-story-card client-ref-5">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Vikram Singh</h3>
+                    </div>
+                    <p>Their hospitality web features helped us streamline bookings and tour management efficiently.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="user-story-card client-ref-6">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Sneha Kapoor</h3>
+                    </div>
+                    <p>The gold-themed event website they built for us looks incredibly premium and functions flawlessly.</p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="user-story-card client-ref-7">
+                    <div class="client-profile">
+                        <div class="photo-circle"><img src="https://via.placeholder.com/100" alt="User"></div>
+                        <h3>Rahul Verma</h3>
+                    </div>
+                    <p>Solid back-end logic and easy-to-use ERP modules. One of the best development experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let stepIndex = 0;
+
+        function slideAction(direction) {
+            const track = document.getElementById('cardTrack');
+            const cards = document.querySelectorAll('.user-story-card');
+            
+            // Logic to determine visible cards based on screen width
+            let visibleCount = window.innerWidth > 1024 ? 3 : (window.innerWidth > 650 ? 2 : 1);
+            const totalSteps = cards.length - visibleCount;
+
+            stepIndex += direction;
+
+            // Loop Logic
+            if (stepIndex > totalSteps) stepIndex = 0;
+            if (stepIndex < 0) stepIndex = totalSteps;
+
+            const gap = 20;
+            const moveDistance = cards[0].offsetWidth + gap;
+            
+            track.style.transform = `translateX(${-stepIndex * moveDistance}px)`;
+        }
+
+        // Automatic Movement every 5 seconds
+        let autoSlide = setInterval(() => slideAction(1), 5000);
+
+        // Pause auto-slide when user clicks arrows
+        document.querySelectorAll('.move-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(autoSlide);
+                autoSlide = setInterval(() => slideAction(1), 7000); // Restart after manual click
+            });
+        });
+    </script>
+
+</body>
+</html>
