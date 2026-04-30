@@ -1,174 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Impact Stories Slider</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TwoDots Films - Reconstructed Layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    /* --- Base Setup & Variables --- */
+    :root {
+        --dark-gray: #4b5e65;
+        --teal: #19acbf;
+        --light-bg: #e5e8e8;
+    }
 
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    /* --- Banner Header --- */
+    .section-banner {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: rgba(233, 233, 233, 0.89);
+    }
+
+    .section-banner h2 {
+        font-size: clamp(32px, 5vw, 62px); /* Responsive font size */
+        color: var(--dark-gray);
+        margin: 0;
+    }
+
+    .section-banner h2 span { color: var(--teal); }
+
+    /* --- Main Services Section --- */
+    .all-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .main-section {
+        display: flex;
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 50px 0;
+    }
+
+    /* --- Card Styling --- */
+    .card {
+        flex: 1 1 300px;
+        max-width: 350px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .card-img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .service-link:hover .card-img {
+        transform: scale(1.08);
+    }
+
+    /* --- Services List --- */
+    .services-container {
+        flex: 1 1 250px;
+        min-width: 250px;
+    }
+
+    .service-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .service-list li {
+        color: #666;
+        font-size: 15px;
+        margin-bottom: 12px;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .service-list.left { border-left: 3px solid var(--teal); padding-left: 20px; }
+    .service-list.right { border-right: 3px solid var(--teal); padding-right: 20px; text-align: right; }
+
+    /* --- Our Reel Grid (A-B A-B Layout) --- */
+    .reel-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Default 2 columns */
+        width: 100%;
+        max-width: 1100px;
+        margin: 4rem auto;
+    }
+
+    .reel-box {
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 10%;
+        overflow: hidden;
+    }
+
+    .text-box { background-color: var(--light-bg); }
+    .image-box { padding: 0; }
+
+    .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .reel-link:hover img { transform: scale(1.1); }
+
+    .reel-box h3 {
+        font-size: clamp(20px, 3vw, 32px);
+        font-weight: 900;
+        color: var(--dark-gray);
+        margin: 0;
+    }
+
+    .reel-box p { font-size: 18px; color: var(--dark-gray); margin-top: 5px; }
+
+    /* --- MOBILE RESPONSIVE (768px & Below) --- */
+    @media (max-width: 768px) {
+        
+        /* Services Section Fix */
+        .main-section {
+            flex-direction: column;
+            gap: 20px;
         }
 
-        body {
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
+        .card { order: 1; width: 100%; max-width: 100%; } /* Image first */
+        .services-container:nth-child(2) { order: 2; width: 100%; } /* Text second */
+        .services-container:nth-child(3) { order: 3; width: 100%; }
+        .main-section .card:last-child { order: 4; width: 100%; }
+
+        .service-list.left, .service-list.right {
+            border: none;
+            padding: 10px;
+            text-align: center;
+            background: #f9f9f9;
+            border-radius: 10px;
         }
 
-        /* Container styling */
-        .impact-container {
-            width:800px;
-            max-width: 1100px;
-            position: relative;
-            padding: 10px 0;
-        }
-
-        /* Swiper wrapper sizing */
-        .swiper {
-            width: 100%;
-            padding: 20px 0;
-            
-        }
-
-        /* Individual Slide (Logo Circle) */
-        .impact-card {
+        /* Reel Grid Fix (A-B Layout) */
+        .reel-grid {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
         }
 
-        .logo-ring {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 7px solid #44767b; /* Teal color like your screenshot */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            
-            padding: 20px;
-             
-        }
+        /* Nexa Pair */
+        .reel-grid div:nth-child(1) { order: 1; } /* Nexa Image */
+        .reel-grid div:nth-child(2) { order: 2; } /* Nexa Text */
 
-        .logo-ring img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+        /* Niharika Pair (Correcting order for A-B) */
+        .reel-grid div:nth-child(3) { order: 4; } /* Niharika Text (Niche bheja) */
+        .reel-grid div:nth-child(4) { order: 3; } /* Niharika Image (Upar laya) */
 
-        /* Navigation Arrows */
-        .swiper-button-next, .swiper-button-prev {
-            color: #44767b;
-            transform: scale(0.7);
-            width:-102px;
-             
-        }
+        .reel-box { height: auto; padding: 40px 20px; text-align: center; }
+        .image-box { height: 250px; }
+    }
 
-        /* Responsive Settings */
-        @media (max-width: 768px) {
-             .impact-container {
-            width:300px;
-            
-            
-        }
-             
-            .logo-ring {
-                width: 120px;
-                height: 120px;
-                padding:15px;
-            }
-             .logo-ring img {
-            width: 100%;
-            height: 100%;
-             
-        }
-        }
-    </style>
+    /* --- iPhone SE & Small Screens (375px) --- */
+    @media (max-width: 375px) {
+        .section-banner h2 { font-size: 28px; }
+        .reel-box h3 { font-size: 22px; }
+        .service-list li { font-size: 14px; }
+    }
+</style>
 </head>
 <body>
-
-    <div class="impact-container">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
-                    <div class="impact-card">
-                        <div class="logo-ring">
-                            <img src="images/Digital_Impact_Stories/DAV TV_LOGO_Alfa_Low.png" alt="DAV TV">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="impact-card">
-                        <div class="logo-ring">
-                            <img src="images/Digital_Impact_Stories/Arya Yuva Samaj_Logo.png" alt="Arya Yuva Samaj">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="impact-card">
-                        <div class="logo-ring">
-                            <img src="images/Digital_Impact_Stories/CAKBS_Logo Circle.png" alt="Superstars">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="impact-card">
-                        <div class="logo-ring">
-                            <img src="images/Digital_Impact_Stories/DAV TV_LOGO_Alfa_Low.png" alt="DAV TV">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
-            <!-- <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
-        </div>
+   
+   <header class="topbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo-animation.gif" alt="TwoDots Films Logo" class="logo-gif">
+        </a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1, // Default for very small screens
-            spaceBetween: 30,
-            loop: true, // Infinite loop
-            autoplay: {
-                delay: 2500, // 2.5 seconds mein automatic move hoga
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                // Jab screen 768px se badi ho (Laptop)
-                768: {
-                    slidesPerView: 3, // 3 slides ek row mein
-                },
-                // Jab screen phone par ho
-                0: {
-                    slidesPerView: 2, // 2 slides ek row mein
-                }
-            },
-        });
-    </script>
+    <nav class="nav" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="reco.html">Recognition</a>
+        <a href="Blog.html">Portfolio</a>
+        <a href="review.html">Reviews</a>
+        
+        <a href="Blog.html">Blog</a>
+        <a href="#contact" class="btn mobile-btn">Get Started</a>
+    </nav>
+
+    <a href="#contact" class="btn desktop-btn">Get Started</a>
+</header>
+
+
+      
+    <section class="section-banner">
+      <h2 class="section-title">Our <span class="accent">Services</span></h2>
+    </section>
+
+ <section class="all-section">
+
+    <section class="main-section">
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1O4Z0uCkjjJUTvB7nYqZCo4" class="service-link">
+            <img src="images\Our Service\AI Innovation.png" alt="AI" class="card-img"> 
+            </a>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list left">
+                <li>AI Video Production</li>
+                <li>AI-Powered Ad Creative</li>
+                <li>AI Product & Brand Visuals</li>
+                <li>AI Content for Social Media</li>
+                <li>AI Personalised Video Content</li>
+                <li>AI Content Automation</li>
+            </ul>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list right">
+                <li>Performance Marketing</li>
+                <li>Social Media Management</li>
+                <li>Influencer Marketing</li>
+                <li>Search Engine Optimization</li>
+                <li>Content Strategy & Planning</li>
+                <li>Website Design & Development</li>
+            </ul>
+        </div>
+
+        <div class="card">
+             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="service-link">
+            <img src="images\Our Service\Digital Solution.png" alt="Digital" class="card-img">
+           </a>
+        </div>
+    </section>
+
+       <section class="main-section">
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1MxK3_OKOesDW6AhreaRh_z" class="service-link">
+            <img src="images\Our Service\Brand Films.png" alt="Brand Films" class="card-img">
+            </a>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list left">
+                <li>Brand Story Films</li>
+                <li>Product Launch Films</li>
+                <li>Campaign Films</li>
+                <li>Founder's Stories</li>
+                <li>Digital Films</li>
+            </ul>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list right">
+                <li>Corporate Profile Films</li>
+                <li>Company Culture Films</li>
+                <li>Client Testimonial Films</li>
+                <li>CSR Impact Films</li>
+                <!-- <li>Training & Internal Communication Films</li> -->
+            </ul>
+        </div>
+
+        <div class="card">
+             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1O9EDqOq43VLd_zcXHH5tie" class="service-link">
+            <img src="images\Our Service\Corporate Narration.png" alt="Corporate" class="card-img">
+            </a>
+        </div>
+    </section>
+     <section class="main-section">
+        <div class="card">
+             <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1Mg2nuMWBmVYh3mrV6ODnNk" class="service-link">
+            <img src="images\Our Service\Motion Design & Animation.png" alt="Motion Design & Animations" class="card-img">
+            </a>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list left">
+                <li>Brand Identity Animations</li>
+                <li>Logo Animations</li>
+                <li>2D/3D Animations</li>
+                <li>Motion Graphic Films</li>
+                <li>Explainer Videos</li>
+            </ul>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list right">
+                <li>Television Commercials</li>
+                <li>Digital Ad Films</li>
+                <li>Performance Marketing Creatives</li>
+                <li>Product Films</li>
+                <li>Campaign's Launch Films</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PxXNRiC4uQHw6iTEB4P61p" class="service-link">
+            <img src="images\Our Service\TVCs & Digital Commercials.png" alt="TVCs & Digital Commercials" class="card-img">
+            </a>
+        </div>
+    </section>
+     <section class="main-section">
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PrgJPSBd19VmZs1bMGgiUB" class="service-link">
+            <img src="images\Our Service\OTT & Web Series.png" alt="OOT & Web Series" class="card-img">
+            </a>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list left">
+                <li>Original Web Series</li>
+                <li>Short Format Films</li>
+                <li>Macro Drama Series</li>
+                <li>AI Web Series</li>
+                <li>Film Packaging</li>
+            </ul>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list right">
+                <li>Social Awareness Campaign</li>
+                <li>Government & Policy PSAs</li>
+                <li>NGO & Non-Profit Films</li>
+                <li>Fund Raising Films</li>
+                <li>Health & Safety Films</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1NtOPHw-l5knjZqyzCfuDR5" class="service-link">
+            <img src="images\Our Service\Public Service Announcement.png" alt="Public Service Announcement" class="card-img">
+             </a>
+        </div>
+    </section>
+     <section class="main-section">
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1MJvBMohJVgr30N-7fTHcoS" class="service-link">
+            <img src="images\Our Service\Documentries.png" alt="Documentaries" class="card-img">
+            </a>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list left">
+                <li>Brand  Documentaries</li>
+                <li>Corporate Documentaries</li>
+                <li>Event & BTS Documentaries</li>
+                <li>CSR Documentaries</li>
+                <li>Social Impact Films</li>
+            </ul>
+        </div>
+
+        <div class="services-container">
+            <ul class="service-list right">
+                <li>Educational Content</li>
+                <li>Thought Leadership Content</li>
+                <li>Case Study Content</li>
+                <li>Data-Driven Content</li>
+                <li>Fact-led Corporate AV</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1Njj6VstoWl_zoVRswHLz3w" class="service-link">
+            <img src="images\Our Service\Factual Content.png" alt="Factual Content" class="card-img">
+            </a>
+        </div>
+    </section>
+        </section>
+
+   
+   <!-- <div class="reel-header">
+        <h2>New On <span>Our Reel</span></h2>
+    </div> -->
+     <section class="section-banner">
+      <h2 class="section-title"> New On <span class="accent"> Our Reel</span></h2>
+    </section>
+ 
+    
+    <div class="reel-grid">
+         
+      <div class="reel-box image-box">
+        <a href="your-link-here.html" class="reel-link">
+            <img src="images\our-reel\Nexa.png" alt="Nexa Car">
+        </a>
+      </div>
+       <div class="reel-box text-box">
+              <h3>Nexa Genuine Accessories</h3>
+             <p>Commercial</p>
+          </div>
+
+   
+      <div class="reel-box text-box">
+        <h3>Why I ride | NIHARIKA</h3>
+        <p>Documentary</p>
+     </div>
+       <div class="reel-box image-box">
+        <a href="your-link-here.html" class="reel-link">
+            <img src="images\our-reel\Niharika.png" alt="Documentary">
+        </a>
+     </div>
+    </div>
+    
+
+
+
+
+
+  <footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>TwoDots Films</h4>
+      <p class="brand-desc">
+        With 25+ years of experience across advertising, media and broadcast.
+        We offer end-to-end solution, from creative storytelling & video production to digital strategy
+        and performance marketing; driving meaningful growth for brands across digital and broadcast platforms.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">The Team</a></li>
+        <li> <a href="Blog.html">Portfolio</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="reco.html">Recognition</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Link</h4>
+      <ul class="footer-links">
+        <li><a href="reco.html#contact-section">Contact US</a></li>
+        <div class="contact-info">
+        <p><strong>Email:</strong></p>
+        <p><a href="mailto:contact@2dotsfilms.com"  class="contact-info">contact@2dotsfilms.com</a></p>
+         
+      </div>
+            <div class="contact-info">
+        <p><strong>Phone:</strong></p>
+        <p><a href="tel:+919953655158" class="contact-info">+91 9953655158</a></p>
+        <p><a href="tel:+919873088079"  class="contact-info">+91 9873088079</a></p>
+        <p><a href="tel:+919911262034"  class="contact-info">+91 9911262034</a></p>
+      </div>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Information</h4>
+      <p>1556, Gaur City Mall, Greater Noida West, Gaur City 1, Sector 4, Greater Noida, UP-201318, India</p>
+      
+  
+      
+
+      <div class="socials">
+        <a href="https://www.youtube.com/@studio17filmz-Twodotsfilms" class="social-icon">▶</a>
+        <a href="https://www.facebook.com/2DotsFilms" class="social-icon">f</a>
+        <a href="https://www.linkedin.com/company/twodots-films/posts/?feedView=all" class="social-icon">in</a>
+        <a href="" class="social-icon">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -26,43 +26,61 @@
 
 // <!-- clients say -->
  
-    let index = 0;
+   
     const slider = document.getElementById('slider');
+    const container = document.getElementById('sliderContainer');
+    const cards = document.querySelectorAll('.testimonial-card');
+    
+    let currentIndex = 0;
+    let autoPlayInterval;
 
-    function slide(direction) {
-        const cards = document.querySelectorAll('.testimonial-card');
+    function getVisibleCards() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function updateSlider() {
+        const visibleCards = getVisibleCards();
         const totalCards = cards.length;
-        
-        // Check screen size to decide how many cards are visible
-        const visibleCards = window.innerWidth <= 768 ? 1 : 3;
-        
-        // Max index jahan tak slider ja sakta hai
         const maxIndex = totalCards - visibleCards;
 
-        index += direction;
-
-        // REPEAT LOGIC: 
-        // 1. Agar first card se peeche jayein, toh last card par bhej do
-        if (index < 0) {
-            index = maxIndex;
-        } 
-        // 2. Agar last card se aage jayein, toh wapas 0 (first) par bhej do
-        else if (index > maxIndex) {
-            index = 0;
+        // Loop logic: Agar end par pahunche to start par aa jaye
+        if (currentIndex > maxIndex) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = maxIndex;
         }
 
-        // Shift calculation
-        // Mobile par 100% move hoga, Laptop par 33.33% move hoga
-        const shift = index * (100 / visibleCards);
-        slider.style.transform = `translateX(-${shift}%)`;
-
-        const cardWidth = document.querySelector('.testimonial-card').offsetWidth;
-      // Slide move logic
-       container.style.transform = `translateX(-${index * cardWidth}px)`;
-
+        const gap = (window.innerWidth <= 768) ? 0 : 20;
+        const cardWidth = cards[0].offsetWidth + gap;
+        slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }
-            // Har 3 second mein apne aap agla card aayega
 
-setInterval(() => {
-    slide(1);
-}, 3000);
+    function slide(direction) {
+        currentIndex += direction;
+        updateSlider();
+    }
+
+    // Auto Play Function (Every 2 seconds)
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            slide(1);
+        }, 2000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    // Event Listeners: Mouse enter par rukega, leave par chalega
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
+
+    // Initial Start & Resize Fix
+    window.addEventListener('resize', () => {
+        currentIndex = 0;
+        updateSlider();
+    });
+
+    startAutoPlay();
