@@ -132,10 +132,13 @@
 
 
 .testimonial-section {
+    position: relative;
             width: 100%;
-            max-width: 1250px;
+            max-width: 1200px;
             text-align: center;
-            padding: 20px;
+            /* height:70px; */
+            margin: 0 auto;
+            padding: 20px 60px;;
             /* margin-left:10%; */
              margin-left: auto;
     margin-right: auto;
@@ -164,7 +167,7 @@
             flex: 0 0 calc(33.33% - 20px);
             margin-right: 20px; 
             background: #fff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             text-align: left;
@@ -173,8 +176,8 @@
 
         .card-header {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            /* align-items: left; */
+            /* margin-bottom: 15px; */
         }
 
         .profile-img {
@@ -311,7 +314,10 @@
             cursor: pointer;
             z-index: 100;
             line-height: 1;
-            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.8s;
             padding: 10px;
         }
 
@@ -320,15 +326,24 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .back-btn { left: -10px; }
-        .forward-btn { right: -10px; }
+        .back-btn { left: 0; }
+        .forward-btn { right: 0; }
 
 /* Mobile par arrows thode chhote */
 @media (max-width: 600px) {
-    .nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
+    .testimonial-card {
+        flex: 0 0 85%; /* 100% ki jagah 85% karein taaki side wala card thoda dikhe (peek effect) */
+        margin-right: 15px; /* Cards ke beech gap dene ke liye */
+        padding: 20px;
+    }
+    
+    .slider-wrapper {
+        gap: 0; /* Gap zero hi rahega kyunki margin-right handle kar lega */
+        padding-left: 15px; /* Pehle card ko thoda side se hatane ke liye */
+    }
+
+    .testimonial-section {
+        padding: 20px 10px; /* Section ki padding kam karein mobile ke liye */
     }
 }
   @media (max-width: 650px) {
@@ -337,6 +352,16 @@
             .back-btn { left: 0; }
             .forward-btn { right: 0; }
         }
+        @media (max-width: 768px) {
+    .testimonial-section {
+        padding: 10px 40px;
+    }
+    .move-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
   </style>
   
 </head>
@@ -379,11 +404,11 @@
     </div>
          <section class="testimonial-section">
     <!-- <h2 class="section-title">Our Customer Reviews</h2> -->
-    
+     <button class="move-btn back-btn" id="prevBtn" onclick="slideAction(-1)">&#10094;</button>
+            <button class="move-btn forward-btn" id="nextBtn" onclick="slideAction(1)">&#10095;</button>
+     
     <div class="slider-container">
-       <button class="move-btn back-btn" onclick="slideAction(-1)">&#10094;</button>
-            <button class="move-btn forward-btn" onclick="slideAction(1)">&#10095;</button>
-        <div class="slider-wrapper" id="slider">
+         <div class="slider-wrapper" id="slider">
             <script>
                 const reviews = [
                     {name: "GURGUR X ENERGY", text: "ALFOREL: Establishing my business with this firm was a seamless experience."},
@@ -539,87 +564,58 @@
 
 <script src="script.js"></script>
 
-<script>
-const slider = document.getElementById('slider');
-const dotsContainer = document.getElementById('dots');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const cards = document.querySelectorAll('.testimonial-card');
+<script>// 2. Slider Logic
+    let index = 0;
+    let autoSlide;
 
-let index = 0;
-let autoSlide;
+    function updateSlider() {
+        const cards = document.querySelectorAll('.testimonial-card');
+        let visibleCount = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+        const maxIndex = cards.length - visibleCount;
 
-// 1. Dots setup
-cards.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => {
-        index = i;
+        if (index > maxIndex) index = 0;
+        if (index < 0) index = maxIndex;
+
+        const cardWidth = cards[0].offsetWidth;
+        
+        const gap = 20; // CSS margin-right se match karein
+        const moveDistance = index * (cardWidth + gap);
+
+        slider.style.transform = `translateX(${-moveDistance}px)`;
+    }
+
+    // 3. Manual Slide (Buttons ke liye)
+    function slideAction(direction) {
+        index += direction;
         updateSlider();
-        resetTimer();
-    });
-    dotsContainer.appendChild(dot);
-});
+        resetTimer(); // Manual click par timer reset
+    }
 
-const dots = document.querySelectorAll('.dot');
+    // 4. Auto Slide & Hover to Stop
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            index++;
+            updateSlider();
+        }, 3000); // 3 seconds
+    }
 
-// 2. Slider Logic
-function updateSlider() {
-    let visibleCards = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
-    const maxIndex = cards.length - visibleCards;
+    function resetTimer() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+    }
 
-    // Boundary check
-    if (index > maxIndex) index = 0;
-    if (index < 0) index = maxIndex;
+    // --- HOVER EVENTS ---
+    // Jab mouse slider par jaye toh ruk jaye
+    slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    
+    // Jab mouse bahar aaye toh wapas shuru ho jaye
+    slider.addEventListener('mouseleave', startAutoSlide);
 
-    const cardWidth = cards[0].offsetWidth;
-    const gap = window.innerWidth <= 600 ? 0 : 20;
-    const moveDistance = index * (cardWidth + gap);
-
-    slider.style.transform = `translateX(${-moveDistance}px)`;
-
-    // Dots update
-    dots.forEach(d => d.classList.remove('active'));
-    if(dots[index]) dots[index].classList.add('active');
-}
-
-// 3. Controls
-nextBtn.addEventListener('click', () => {
-    index++;
+    // Initial setup
+    window.addEventListener('resize', updateSlider);
     updateSlider();
-    resetTimer();
-});
-
-prevBtn.addEventListener('click', () => {
-    index--;
-    updateSlider();
-    resetTimer();
-});
-
-// 4. Auto Slide Logic
-function startAutoSlide() {
-    autoSlide = setInterval(() => {
-        index++;
-        updateSlider();
-    }, 3000); // 3 seconds mein move hoga
-}
-
-function resetTimer() {
-    clearInterval(autoSlide);
     startAutoSlide();
-}
-
-// Mouse over hone par stop
-slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
-slider.addEventListener('mouseleave', startAutoSlide);
-
-window.addEventListener('resize', updateSlider);
-
-// Initial start
-updateSlider();
-startAutoSlide();
-</script>
+    startAutoPlay();</script>
 
 </body>
 </html>

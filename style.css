@@ -1185,11 +1185,19 @@
         
        
         font-size: 18px !important;
+        width:10%;
     }
 
     .review-body, .review-reply {
         margin-left: 0 !important;
         padding: 10px;
         font-size: 16px !important;
+    }
+}
+@media (max-width: 600px) {
+    .subline {
+        font-size: 18px;     /* Mobile par font thoda chhota */
+        padding: 6px 12px;   /* Behtar spacing */
+        letter-spacing: 0.5px;
     }
 }
