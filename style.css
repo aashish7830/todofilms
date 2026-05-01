@@ -509,6 +509,7 @@
       color:var(--heading);
       line-height:1.05;
     }
+   
 
 /* Mobile screens ke liye adjustments */
 @media only screen and (max-width: 767px) {
@@ -596,12 +597,12 @@
 }
 
 .corner-icon img {
-    width: 45px; /* Default for mobile */
+    width: 40px; /* Default for mobile */
     height: auto;
 }
 
 .top-left {
-    top: -12px;
+    top: -10px;
     left: -12px;
 }
 
@@ -646,7 +647,7 @@
     }
     .corner-icon img { width: 75px; }
     .top-left { top: -25px; left: -25px; }
-    .bottom-right { bottom: -25px; right: -25px; }
+    .bottom-right { bottom: -35px; right: -25px; }
 }
 
 /* 3. Large Desktops & 4K (1440px to 2560px) */
@@ -663,7 +664,7 @@
 /* Extra Large Screens (2560px+) */
 @media (min-width: 2560px) {
     .logo-container { max-width: 1800px; }
-    .corner-icon img { width: 120px; }
+    .corner-icon img { width: 100px; }
 }
  
 
@@ -750,7 +751,8 @@
         /* Arrows Styling */
         .slider-controls {
             position: absolute;
-            top: 40%;
+            top: 30%;
+             /* align-items: center;  */
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -1089,7 +1091,7 @@
        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Clean Sans-serif font */
     font-size: 32px; /* Screenshot ke hisaab se perfect size */
     font-weight: 600; /* Semi-bold look */
-    color: #001d2a; /* Deep dark blue/charcoal color jo image mein hai */
+    /* Deep dark blue/charcoal color jo image mein hai */
     text-align: center; /* Center alignment */
     padding: 20px;
      

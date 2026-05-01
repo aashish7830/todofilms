@@ -27,8 +27,9 @@
 
         /* Box Styling */
         .reel-box {
-            height: 290px;
+            height: 100%;
             display: flex;
+            width:100%;
             flex-direction: column;
             justify-content: center;
             padding: 0 10%;
@@ -55,7 +56,7 @@
         .reel-box h3 {
             font-size: 32px;
             margin: 0;
-            color: #1a1a1a;
+            color: var(--heading);
             line-height: 1.2;
             text-align: center;
         }
@@ -63,10 +64,20 @@
         .reel-box p {
             font-size: 20px;
             /* margin: 10px 0 0; Margin-left: 70px ko hata diya gaya hai */
-             color: #333;
+             color: var(--heading);
                 font-weight: 500;
                  
         }
+
+        .reel-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Bahut zaroori: zoom image ko box ke andar rakhega */
+}
+     .reel-link:hover img {
+    transform: scale(1.08); /* 8% zoom professional lagta hai */
+}
 
         /* --- Media Query for Mobile --- */
         @media (max-width: 768px) {
@@ -132,9 +143,76 @@
     .reel-grid div:nth-child(9) { order: 9; } /* Text 5 */
     .reel-grid div:nth-child(10) { order: 10; } /* Image 5 */
 }
-  
      
+          /* Image link container */
+ .image-link{
+     display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+ }
 
+/* Hover Effect */
+.image-link:hover img {
+    transform: scale(1.09); /* Image thodi zoom hogi */
+     cursor: pointer;
+}
+
+.image-link img {
+    display: block;
+    /* width: 110%; */
+    /* height: auto; */
+    transition: transform 0.3s ease; /* Smooth animation ke liye */
+}
+     
+   /* Arrows Styling */
+        .slider-controls1 {
+            position: absolute;
+            top: 46%;
+             /* align-items: center;  */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+            max-width: 1300px;
+        }
+
+        .arrow1 {
+            pointer-events: auto;
+            background: transparent;
+            border: none;
+            font-size: 50px;
+            color: #157e9e;
+            cursor: pointer;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        .arrow1:hover {
+            color: #1cbfd2;
+            transform: scale(1.2);
+        }
+           @media (max-width: 1024px) {
+            
+            .slider-controls1 {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+        }
+    }
+          @media (max-width: 768px) {
+            
+            .arrow1 {
+                font-size: 30px;
+            }
+            .slider-controls1 {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+        }
+    }
           
     </style>
 </head>
@@ -173,9 +251,10 @@
 <div class="section-banner"><h2 class="section-title">Digital <span class="accent">Impact Stories</span></h2></div>
      <div class="testimonial-wrapper">
     <!-- Navigation Arrows -->
-    <div class="slider-controls">
-        <button class="arrow" onclick="slide(-1)">&#10094;</button>
-        <button class="arrow" onclick="slide(1)">&#10095;</button>
+     
+    <div class="slider-controls1">
+        <button class="arrow1" onclick="slide(-1)">&#10094;</button>
+        <button class="arrow1" onclick="slide(1)">&#10095;</button>
     </div>
 
     <!-- Main Slider Container -->
@@ -214,7 +293,7 @@
 
             <!-- Card 6 -->
             <div class="testimonial-card">
-                <img src="images/What Our Cliets Say/Bill Gates.png" class="profile-img" alt="Profile">
+                <img src="images/What Our Cliets Say/Bill Gates.png" class="profile-img" alt="Profile" >
                  
             </div>
 
@@ -222,13 +301,14 @@
     </div>
 </div>
 
-   
-<div class="section-banner"><h2 class="section-title">Creative Content <span class="accent">Portfolio</span></h2></div>
+    
+<div class="section-banner" ><h2 class="section-title"  id="creative">Creative Content <span class="accent">Portfolio</span></h2></div>
      <div class="reel-grid">
         
         
         <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\World Cup.png" alt="World Cup (Gaurav Kapur)">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="image-link">
+            <img src="images\Creative Content Portfolio\World Cup.png" alt="World Cup (Gaurav Kapur)"></a>
         </div>
         <div class="reel-box text-box">
             <h3>World Cup (Gaurav Kapur)</h3>
@@ -241,11 +321,13 @@
             <p> Corporate Film </p>
         </div>
          <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\KGOC.png" alt="KGOC Independence Day Film">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="image-link">
+            <img src="images\Creative Content Portfolio\KGOC.png" alt="KGOC Independence Day Film"></a>
         </div>
         
         <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\Antardwand.png" alt="Antardwand">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="image-link">
+            <img src="images\Creative Content Portfolio\Antardwand.png" alt="Antardwand"></a>
         </div>
          <div class="reel-box text-box">
             <h3>Antardwand</h3>
@@ -258,10 +340,12 @@
             <p>  Anti-Drug Awareness Campaign</p>
         </div>
           <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\No Nasha Nation.png" alt="No Nasha Nation Anthem">
+            <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="image-link">
+            <img src="images\Creative Content Portfolio\No Nasha Nation.png" alt="No Nasha Nation Anthem"></a>
         </div>
   <div class="reel-box image-box">
-            <img src="images\Creative Content Portfolio\Vijay.png" alt=" Vijay">
+    <a href="https://www.youtube.com/playlist?list=PLEr26qPa7J1PLXSGiQsJ9Dc-r9k9LoYXd" class="image-link">
+            <img src="images\Creative Content Portfolio\Vijay.png" alt=" Vijay"></a>
         </div>
          <div class="reel-box text-box">
             <h3>Why I ride | Vijay</h3>
