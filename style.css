@@ -168,255 +168,66 @@
     
    
 
-    .hero{
-      position:relative;
-      min-height:640px;
-      overflow:hidden;
-      background:#161616;
-    }
+  
 
-    .hero img.bg{
-      width:100%;
-      height:640px;
-      object-fit:cover;
-      opacity:.92;
-    }
+     
 
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.15) 45%,rgba(0,0,0,.45));
-    }
+   
 
-    .hero-copy{
-      position:absolute;
-      left:24px;
-      bottom:28px;
-      color:#fff;
-      max-width:720px;
-      z-index:2;
-    }
-
-    .hero-copy h1{
-        margin-left:0.7rem;
-        margin-top:0.2rem;
-      font-size:68px;
-      line-height:.95;
-      font-weight:900;
-      /* margin-bottom:16px; */
-      color:rgb(198, 198, 198);
-
-    }
-
-    .hero-copy h1 .accent,
-    .title .accent,
-    .section-title .accent,
-    .newsletter-title .accent{
-      color:var(--accent);
-    }
-
-    .hero-copy p{
-      font-size:20px;
-      line-height:1.6;
-      max-width:1300px;
-      margin-top:1.6rem;
-      margin-left:-1rem;
-      width:1001px;
-    }
-
-    .hero-right{
-      position:absolute;
-      right:29px;
-      bottom:30px;
-    color:rgb(198, 198, 198);
-      font-size:70px;
-      font-weight:800;
-      margin-right:1rem;
-
-      /* z-index:2; */
-      /* text-align:right; */
-    }
-
-   /* corner mark */
- /* Pehle design ka container (Top-Left) */
-        .teal-box-1 {
-            position: absolute;
-            top:-1rem;
-            left:-1rem;
-            width: 100px;
-            height: 200px;
-        }
-
-        /* Dusre design ka container (Bottom-Right) */
-        .teal-box-2 {
-            position: absolute;
-            bottom: 20px;
-            right: 120px; /* Circle ki width adjust karne ke liye */
-            width: 100px;
-            height: 100px;
-            margin-right:-9rem;
-            margin-bottom:-2rem;
-        }
-
-        /* --- Common Styles for Shapes --- */
-
-        /* Sidha L-Shape */
-        .teal-box {
-            position: absolute;
-            width: 70px; 
-            height: 70px;
-            background-color: #2e838b;
-            /* clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 40% 25%, 40% 100%, 0% 100%); */
-            clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
-        }
-
-        /* Sidha Circle */
-        .bottom-circle {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: #4E5D61;
-            border-radius: 50%;
-            top: 75px; /* L-shape ke thik niche */
-            left:-1px;
-        }
-
-        /* Ulta L-Shape */
-        .teal-box-u {
-            position: absolute;
-            width:70px;
-            height: 70px;
-            background-color: #4E5D61;
-            transform: rotate(180deg);
-             clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
-        }
-
-        /* Ulta Circle (Jo ab upar dikhega) */
-        .bottom-circle-u {
-            position: absolute;
-            right:30px; /* Inverted L ke corner se match karne ke liye */
-            width: 25px;
-            height: 25px;
-           
-             background-color: #2e838b;
-            border-radius: 50%;
-            top: -30px; /* L-shape ke upar positioning */
-        }
-
-
-
-
-        /* 2 section design */
+     
  
-        
 
-        /* Pehle design ka container (Top-Left) */
-        .teal-box-12 {
-            position: absolute;
-            top:19px;
-            left:250px;
-            width: 100px;
-            height: 200px;
-        }
+       
 
-        /* Dusre design ka container (Bottom-Right) */
-        .teal-box-22 {
-            position: absolute;
-            bottom:15px;
-            right:90px; /* Circle ki width adjust karne ke liye */
-            width: 100px;
-            height: 100px;
-        }
 
-        /* --- Common Styles for Shapes --- */
 
-        /* Sidha L-Shape */
-       .teal-box2 {
-    position: absolute;
-    /* Height aur Width ko image ke hisaab se 100px rakha hai */
-    width: 100px; 
-    height: 100px;
-    background-color: #2e838b;
-    /* Is clip-path se L-shape ki dono sides barabar moti (30%) dikhengi */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 30% 30%, 30% 100%, 0% 100%);
-    top:-11px; 
-    left:-4px; 
+ .hero-center {
+  /* padding: 50px 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f4f4f4; /* Light background taaki video front mein dikhe */
+  /* min-height: 100vh; */
+}
+
+/* Video Container: Ye YouTube jaisa behaviour dega */
+.video-container {
+  width: 100%;
+  max-width: 1500px; /* Laptop par ek limit rahegi */
+  aspect-ratio: 16 / 9; /* Modern CSS for responsive ratio */
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.2); */
+  /* border-radius: 12px; */
+  overflow: hidden;
+  /* margin-bottom: 30px; */
+}
+
+.main-video {
+  width: 100%;
+  /* height: 100%; */
+  display: block;
+  object-fit: contain; /* Video crop nahi hogi */
+  background: #000; /* Sidebar black rahenge agar video ratio alag hai */
+}
+
+/* Text Content Styling */
+.hero-copy-center {
+  max-width: 100%;
 }
 
  
- 
-    
 
-
-
-
-/* logo design for  */
-  /* Pehle design ka container (Top-Left) */
-        .teal-box-123 {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100px;
-            height: 200px;
-        }
-
-        /* Dusre design ka container (Bottom-Right) */
-        .teal-box-223 {
-            position: absolute;
-            /* bottom: 20px; */
-            left:119px; /* Circle ki width adjust karne ke liye */
-            width: 100px;
-            height: 100px;
-            top:40px;
-        }
-
-        /* --- Common Styles for Shapes --- */
-
-        /* Sidha L-Shape */
-        .teal-box23 {
-            position: absolute;
-            width:20px;
-            height:20px;
-            background-color: #44767b;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 20% 25%, 20% 100%, 0% 100%);
-        }
-
-        /* Sidha Circle3 */
-        .bottom-circle23 {
-            position: absolute;
-            width:8px;
-            height:8px;
-            background-color: #4E5D61;
-            border-radius: 50%;
-            top:22px; /* L-shape ke thik niche */
-            margin-left:-2px;
-        }
-
-        /* Ulta L-Shape */
-        .teal-box-u23 {
-            position: absolute;
-            width:20px;
-            height:20px;
-            background-color: #44767b;
-            transform: rotate(180deg);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 25%, 20% 25%, 20% 100%, 0% 100%);
-        }
-
-        /* Ulta Circle (Jo ab upar dikhega) */
-        .bottom-circle-u23 {
-            position: absolute;
-            left:13px; /* Inverted L ke corner se match karne ke liye */
-            width:8px;
-            height:8px;
-            background-color: #4E5D61;
-            border-radius: 50%;
-            top: -10px; /* L-shape ke upar positioning */
-        }
-
-
-
-
-
+/* Responsive adjustments for Mobile */
+@media (max-width: 768px) {
+  .hero-copy-center h1 {
+    font-size: 1.8rem;
+  }
+  .video-container {
+    max-width: 100%; /* Mobile par full width */
+    border-radius: 0; /* Mobile par cleaner look */
+  }
+}
 
 
 
