@@ -1,6 +1,5 @@
 
 
-
 // <!-- menu bar -->
 
     const menuToggle = document.getElementById('mobile-menu');
