@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
-  <style>
+   <style>
        
 
         
@@ -54,15 +54,17 @@
 
         /* Typography */
         .reel-box h3 {
-            font-size: 32px;
+            font-size: 25px;
             margin: 0;
+            text-align: center;
             color: var(--heading);
             line-height: 1.2;
             text-align: center;
         }
 
         .reel-box p {
-            font-size: 20px;
+            font-size: 18px;
+            text-align: center;
             /* margin: 10px 0 0; Margin-left: 70px ko hata diya gaya hai */
              color: var(--heading);
                 font-weight: 500;
@@ -143,6 +145,20 @@
     .reel-grid div:nth-child(9) { order: 9; } /* Text 5 */
     .reel-grid div:nth-child(10) { order: 10; } /* Image 5 */
 }
+
+ 
+.image-link1:hover img {
+    transform: scale(1.02); /* Image thodi zoom hogi */
+     cursor: pointer;
+       transition: 0.3s ease;
+}
+
+ 
+
+
+
+
+
      
           /* Image link container */
  .image-link{
@@ -156,6 +172,7 @@
 .image-link:hover img {
     transform: scale(1.09); /* Image thodi zoom hogi */
      cursor: pointer;
+     color:red;
 }
 
 .image-link img {
@@ -209,10 +226,13 @@
             }
             .slider-controls1 {
             position: absolute;
-            top: 30%;
+            top: 45%;
             width: 100%;
         }
     }
+      #Creative{
+   scroll-margin-top: 100px;
+}
           
     </style>
 </head>
