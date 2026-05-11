@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="style.css" rel="stylesheet">
-  <style>
+<style>
       /* Grid Container */
         .reel-grid {
             display: grid;
@@ -52,25 +52,28 @@
         /* Typography */
   
 .reel-box h3 {
-    font-family: 'Arial Black', 'Arial', sans-serif; /* Heavy font for Nexa */
-    font-size: 40px; /* Large heading */
-    font-weight: 900;
+    
+    font-size: 25px; /* Large heading */
+    
     color: #546670;
     margin: 0;
     line-height: 1;
+    text-align: center;
     letter-spacing: -1.5px; /* Nexa wale text mein letters kafi paas hain */
     text-align: center;
 }
 
 .reel-box p {
-    font-family: 'Arial', sans-serif;
-    font-size: 24px; /* Subheading size */
-    font-weight: 700; /* Commercial thoda bold hai image mein */
+    
+    font-size: 18px; /* Subheading size */
+     
     color: #546670;
     margin: 0px 0 0; /* Heading ke ekdum niche */
     line-height: 1.6;
     letter-spacing: -0.5px;
-    margin-left:140px;
+    text-align: center;
+     
+    {% comment %} margin-left:140px; {% endcomment %}
 }
  
         /* --- Media Query for Mobile --- */
@@ -176,17 +179,20 @@
 
         .card-header {
             display: flex;
-            /* align-items: left; */
+             {% comment %} align-items: left;   {% endcomment %}
             /* margin-bottom: 15px; */
+            position: relative;
         }
 
         .profile-img {
-            width: 60px;
-            height: 60px;
+            width: 60px !important;  /* Apne hisab se badhayein (e.g., 50px, 80px) */
+            height: 60px !important;
             border-radius: 50%;
             border: 2px solid #d4af37;
             object-fit: cover;
             background: #eee;
+            margin-left:-3rem;
+            
         }
 
         .user-info {
@@ -202,15 +208,15 @@
 
         .stars {
             color: #ffb400;
-            font-size: 12px;
+            font-size: 14px !important;
         }
 
         .quote-icon {
             font-size: 35px;
-            color: #e3effb;
+            color: #556771;
             position: absolute;
-            right: 25px;
-            top: 25px;
+            margin-left: 10rem !important;
+            {% comment %} top: 25px; {% endcomment %}
         }
 
         .review-text {
@@ -248,6 +254,12 @@
             .testimonial-card {
                 flex: 0 0 calc(50% - 20px);
             }
+            .stars{
+                font-size:5px;
+            }
+            .subline{
+                width:100px;
+            }
         }
 
         /* Mobile Phone (1 card - No Cutting) */
@@ -259,6 +271,9 @@
             }
             .slider-wrapper {
                 gap: 0;
+            }
+            .stars{
+                font-size:3px;
             }
         }
 
