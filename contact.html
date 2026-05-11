@@ -594,23 +594,23 @@
                         <h3>Send a message</h3>
                         <ul>
                             <li>Customers</li>
-                            <li><a href="mailto:support@egshoppers.com">support@egshoppers.com</a></li>
+                            <li><a href="mailto:contact@2dotsfilms.com">contact@2dotsfilms.com</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="contact-info-card">
-                        <div class="contact-icon">⌂</div>
-                        <h3>Store location</h3>
-                        <ul>
-                            <li>Enquiry Gate Pvt. Ltd.   1559, 15th Floor, Gaur City Mall</li>
+                       <div class="contact-icon"><a href="https://maps.app.goo.gl/ZZhqKaULGk5pNEQDA"><i class="bi bi-geo-alt-fill"></i></a></div>
+                         <h3>Office location</h3>
+                         <ul>
+                            <li>TwoDots Films Pvt. Ltd.   1556, 15th Floor, Gaur City Mall</li>
                             <li>Greater Noida, India</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-xl-3">
+                <!-- <div class="col-12 col-sm-6 col-xl-3">
                     <div class="contact-info-card">
                         <div class="contact-icon">⏰</div>
                         <h3>Working hours (IST)</h3>
@@ -619,7 +619,7 @@
                             <li>Sat - Sun: 10:00 - 15:00</li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -648,7 +648,12 @@
 
 
     <script src="/script.js"></script>
-     
+         <script>
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('success') === '1') {
+    alert("✅ Message sent successfully!");
+}
+</script>
     
 </body>
 </html>
